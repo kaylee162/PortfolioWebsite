@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--Title Page-->
+		<title>Kaylee Henry</title>
+
+		<!--Favicon-->
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+
+		<!--Fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+		<!--Link to CSS Stylesheet and JS Script-->
+		<link rel="stylesheet" href="styles.css">
+	</head>
+
+	<body>
+		<!--Fixed Heading at Top-->
+		<h1 class="fixed-heading">Kaylee Henry | Front-End Developer</h1>
+
+		<!--NavBar-->
+		<nav class="navbar">
+			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
+        		<ul class="nav-links">
+            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
+      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
+				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
+        		</ul>
+		</nav>
+
+		<script>
+		function toggleMenu() {
+  			const navLinks = document.querySelector(".nav-links");
+  			navLinks.classList.toggle("show");
+		}
+
+		</script>
+
+
+		<!--All Content on WebPage-->
+		<div class="flex-container">
+			<img src="profilepic.jpg" alt="Kaylee Henry Professional Photo" class="profile-photo"/>
+			<p>
+			Hi, I'm Kaylee Henry, a passionate computer science student and aspiring front-end developer. I specialize in designing visually engaging and user-friendly websites, with a strong focus on combining creativity with functionality. <br><br>
+			With experience in programming languages like Java, C#, HTML, and JavaScript, I enjoy tackling complex problems and creating innovative solutions. My goal is to continuously improve my skills and contribute to exciting projects that make a difference. When I'm not coding, I love exploring new technologies, traveling, and finding inspiration in everyday experiences. <br><br>
+			Feel free to check out some of the projects I've worked on or get in touch with me! <br><br>  
+    			<a href="projects.html" class="button">View My Projects</a><a href="contact.html" class="button">Contact Me</a>
+			</p>
+
+		</div>
+
+
+		<footer class="footer">
+			<div class="footer-container">
+				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<div class="contact-info">
+					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
+            				<p>Phone: (678) 579-7458</p>
+					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kayleehenry162</a></p>
+					<p>LinkedIn: <a href="https://www.linkedin.com/in/kaylee-henry-769357313/" target="_blank">LinkedIn Profile</a></p>
+				</div>
+			</div>
+		</footer>	
+	</body>
+</html>

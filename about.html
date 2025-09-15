@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--Title Page-->
+		<title>Kaylee Henry</title>
+
+		<!--Favicon-->
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+
+		<!--Fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+		<!--Link to CSS Stylesheet and JS Script-->
+		<link rel="stylesheet" href="styles.css">
+	</head>
+
+	<body>
+		<!--Fixed Heading at Top-->
+		<h1 class="fixed-heading">Kaylee Henry | Front-End Developer</h1>
+
+		<!--NavBar-->
+		<nav class="navbar">
+			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
+        		<ul class="nav-links">
+            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
+      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
+				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
+        		</ul>
+		</nav>
+
+		<script>
+		function toggleMenu() {
+  			const navLinks = document.querySelector(".nav-links");
+  			navLinks.classList.toggle("show");
+		}
+
+		</script>
+
+		<!--All Content on WebPage-->
+		
+		<p>
+		Hi, I'm Kaylee Henry, a passionate and driven Computer Science student currently pursuing my degree at Kennesaw State University. I graduated from Georgia Connections Academy in May of 2024.<br><br>
+		I specialize in front-end development, but my interests span across various areas of software development, including web design, graphic design, and video game development. I am dedicated to building sleek, user-friendly designs and creating meaningful, functional digital experiences.<br><br>
+		When I’m not coding, I enjoy staying active by running, hiking and biking, as well as exploring new places. I'm also an Eagle Scout, an accomplishment that I earned through my dedication to leadership, teamwork, and giving back to the community.
+		</p>
+		
+		<!-- Gallery Section -->
+		<section class="gallery">
+    			<div class="gallery-item">
+        			<img src="pic1.jpg">
+    			</div>
+    			<div class="gallery-item">
+        			<img src="pic2.jpg">
+    			</div>
+    			<div class="gallery-item">
+        			<img src="pic3.jpg">
+    			</div>
+		</section>
+
+		<h2>My Skills</h2>
+		<p>
+		<b>Programming Languages</b><br></p>
+
+		<li>Java: Proficient in building object-oriented applications and solving problems with clean, reusable code.</li>
+		<li>C#: Experienced in developing interactive programs and game mechanics.</li>
+		<li>HTML/CSS/JavaScript: Skilled in designing responsive, user-centered websites.</li>
+		<li>Python: Comfortable with scripting, data manipulation, and algorithm development.</li>
+
+		<p><b>Software Development</b></p>
+		<li>Familiar with creating web applications, debugging, and testing code for optimized performance.</li>
+		<li>Experience with data structures and algorithms, making me well-versed in computational thinking.</li>
+
+		<p><b>Game Development</b></p>
+		<li>Hands-on experience with Unity for creating engaging, interactive projects.</li>
+		<li>Knowledgeable in designing 2D and 3D environments with clean UI components.</li>
+		
+		<p><b>Graphic Design</b></p>
+		<li>Creative in designing layouts, logos, and website graphics to complement my development work.</li>
+		</p>
+
+		<h2>Why Work With Me?</h2>
+		<p>
+		With over 400+ hours of community service, I bring dedication, teamwork, and leadership to everything I do. I take pride in my ability to learn quickly, adapt to new challenges, and collaborate with others to achieve goals.<br><br>
+		Whether you're interested in exploring my projects, hiring me for a development opportunity, or just want to connect, I would love to hear from you!<br><br>
+		<a href="contact.html">Visit My Contact Page</a>
+		</p>
+
+
+
+		<footer class="footer">
+			<div class="footer-container">
+				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<div class="contact-info">
+					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
+            				<p>Phone: (678) 579-7458</p>
+					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kayleehenry162</a></p>
+					<p>LinkedIn: <a href="https://www.linkedin.com/in/kaylee-henry-769357313/" target="_blank">LinkedIn Profile</a></p>
+				</div>
+			</div>
+		</footer>	
+	</body>
+</html>

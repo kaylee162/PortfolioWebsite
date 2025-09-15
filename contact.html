@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!--Title Page-->
+		<title>Kaylee Henry</title>
+
+		<!--Favicon-->
+		<link rel="icon" type="image/x-icon" href="favicon.png">
+
+		<!--Fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+		<!--Link to CSS Stylesheet and JS Script-->
+		<link rel="stylesheet" href="styles.css">
+	</head>
+
+	<body>
+		<!--Fixed Heading at Top-->
+		<h1 class="fixed-heading">Kaylee Henry | Front-End Developer</h1>
+
+		<!--NavBar-->
+		<nav class="navbar">
+			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
+        		<ul class="nav-links">
+            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
+      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
+				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
+        		</ul>
+		</nav>
+
+		<script>
+		function toggleMenu() {
+  			const navLinks = document.querySelector(".nav-links");
+  			navLinks.classList.toggle("show");
+		}
+
+		</script>
+
+
+		<!--All Content on WebPage-->
+		<div class="body-contact">
+			<form action="contact.php" method="POST">
+				<p style="text-align:center;"><b>Contact me using this form and I'll get back to you ASAP</p></b>
+				<div class="form-group">		
+					<label for="name">Name:</label><br>
+    					<input type="text" id="name" name="name" required><br><br>
+    	   			</div>
+
+				<div class="form-group">		
+					<label for="email">Email:</label><br>
+    					<input type="email" id="email" name="email" required><br><br>
+				</div>
+
+				<div class="form-group">
+    					<label for="message">Message:</label><br>
+    					<textarea id="message" name="message" rows="5" required></textarea><br><br>
+				</div>
+    
+	 			<button type="submit">Submit</button>
+			</form>	
+		</div>
+		
+
+	
+		
+
+		<footer class="footer">
+			<div class="footer-container">
+				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<div class="contact-info">
+					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
+            				<p>Phone: (678) 579-7458</p>
+					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kayleehenry162</a></p>
+					<p>LinkedIn: <a href="https://www.linkedin.com/in/kaylee-henry-769357313/" target="_blank">LinkedIn Profile</a></p>
+				</div>
+			</div>
+		</footer>		
+	</body>
+</html>
