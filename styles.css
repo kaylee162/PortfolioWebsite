@@ -278,6 +278,9 @@ align-self: center;
 }
 
 .body-contact {
+display: flex;
+justify-content: center;
+align-items: center;
 margin: 0;
 padding-top: 50px;
 padding-bottom: 50px;
