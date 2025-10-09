@@ -4,17 +4,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Portfolio projects by Kaylee Henry showcasing Java, C#, Python, HTML/CSS, JavaScript, React, Node.js, and Django development work">
 
 		<!--Title Page-->
-		<title>Kaylee Henry</title>
+		<title>Projects | Kaylee Henry</title>
 
 		<!--Favicon-->
 		<link rel="icon" type="image/x-icon" href="favicon.png">
 
 		<!--Fonts-->
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-		<!--Link to CSS Stylesheet and JS Script-->
+		<!--Link to CSS Stylesheet-->
 		<link rel="stylesheet" href="styles.css">
 	</head>
 
@@ -24,196 +25,418 @@
 
 		<!--NavBar-->
 		<nav class="navbar">
-			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
-        		<ul class="nav-links">
-            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+			<div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰ Menu</div>
+        	<ul class="nav-links">
+            	<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
 				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
-      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
 				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
 				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
-        		</ul>
+        	</ul>
 		</nav>
 
 		<script>
-		function toggleMenu() {
-  			const navLinks = document.querySelector(".nav-links");
-  			navLinks.classList.toggle("show");
-		}
-
+			function toggleMenu() {
+  				const navLinks = document.querySelector(".nav-links");
+  				navLinks.classList.toggle("show");
+			}
 		</script>
 
-		<!--All Content on WebPage-->
-		<br>
-		<div style="text-align:center;">
-			<a href="#java" class="button">Jump to Java</a> 
-			<a href="#csharp" class="button">Jump to C#</a> 
-			<a href="#python" class="button">Jump to Python</a>
-			<a href="#html" class="button">Jump to HTML and CSS</a>
-			<a href="#js" class="button">Jump to JavaScript</a> 
+		<!--Projects Hero Section-->
+		<section class="projects-hero">
+			<h1>My Projects</h1>
+			<p>
+				A comprehensive showcase of my work across multiple programming languages and frameworks. 
+				From full-stack web applications to game development, each project demonstrates my commitment 
+				to writing clean, efficient code and creating exceptional user experiences.
+			</p>
+		</section>
+
+		<!--Jump Navigation-->
+		<div class="jump-nav">
+			<a href="#featured" class="button">Featured</a>
+			<a href="#react" class="button">React</a>
+			<a href="#nodejs" class="button">Node.js</a>
+			<a href="#django" class="button">Django</a>
+			<a href="#java" class="button">Java</a> 
+			<a href="#csharp" class="button">C#</a> 
+			<a href="#python" class="button">Python</a>
+			<a href="#html" class="button">HTML/CSS</a>
+			<a href="#js" class="button">JavaScript</a> 
 		</div>		
-		
-		<p>
-		Welcome to my Projects and Assignments page! Here, you'll find a showcase of the work I've completed in various programming languages and technologies, highlighting my skills and creativity as a Computer Science student and aspiring front-end developer.<br><br>
-		I’ve organized my projects by programming language to give you a clear view of my expertise</p>
 
-		<li><b>Java:</b> Object-oriented programs, algorithms, and problem-solving applications.</li>
-		<li><b>C#:</b> Interactive projects, including game mechanics and simulations.</li>
-		<li><b>Python:</b> Data analysis, automation, and algorithm development.</li>
-		<li><b>HTML & CSS:</b> Responsive web design and creative layouts.</li>
-		<li><b>JavaScript:</b> Dynamic and interactive web applications.</li>
-		<p>Each project reflects my commitment to writing clean, efficient, and functional code while continually improving my technical skills. Feel free to explore my work and see how I bring ideas to life through code!</p>
-
-
-		<section id="java">
-			<h2>Java Projects</h2>
-			<p>Java was one of the first programming languages I learned, and it taught me the fundamentals of object-oriented programming. I’ve used Java to develop a variety of projects, from solving complex algorithms to building interactive applications. My work with Java reflects my focus on efficiency and clean design.</p>
-
-			<section class="projects-container">
-				<div class="projects-container">
-					<div class="project-card">
-						<h3>Library Managment System</h3>
-						<p>A program that allows users to add, search, borrow and return, and view books from a virtual library.</p>
-						<a href="https://github.com/kaylee162/LibraryManagement.git" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-
-					<div class="project-card">
-						<h3>Maze Solver</h3>
-						<p>An algorithm-based solution for finding the shortest path through a maze using depth-first search.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-		
-					<div class="project-card">
-						<h3>Banking App</h3>
-						<p>An application that allows user to create accounts, deposit and withdraw money, and view transaction history and stores data using file I/O.</p>
-						<a href="https://github.com/kaylee162/Banking.git" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-
-					<div class="project-card">
-						<h3>Minesweeper</h3>
-						<p>A classic minesweeper game with a graphical user interface (GUI). Includes features like digging up bombs and flagging potential ones.</p>
-						<a href="https://github.com/kaylee162/Minesweeper.git" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-				</div>
-			</section>
-		</section>
-		
-		<section id="csharp">
-			<h2>C# Projects</h2>
-			<p>C# has been my go-to language for creating game mechanics and interactive applications. I’ve worked with C# in game engines like Unity to bring my ideas to life. My projects demonstrate my ability to think critically and creatively while developing engaging user experiences.</p>
-
-			<section class="projects-container">
-				<div class="projects-container">
-					<div class="project-card">
-						<h3>2D Platformer Game</h3>
-						<p>A fully functional 2D game with smooth animations, collision detection, and level progression.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-
-					<div class="project-card">
-						<h3>Quiz Game</h3>
-						<p>A quiz game with multiple-choice questions, a timer, and a scoring system.</p>
-						<a href="https://github.com/kaylee162/QuizGame.git" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-		
-					<div class="project-card">
-						<h3>Inventory Management System</h3>
-						<p>A program for a small business to manage inventory. Includes features that allow users to add, update and delete products as well as track stock levels.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-				</div>
-			</section>
-		</section>
-		
-		<section id="python">
-			<h2>Python Projects</h2>
-			<p>Python is a language I love for its simplicity and versatility. I’ve used Python to tackle data analysis problems, create scripts for automation, and explore the fundamentals of machine learning. It’s a tool I rely on for both academic and personal projects.</p>
+		<!--Featured Projects Section-->
+		<section id="featured" class="featured-section">
+			<h2>Featured Projects</h2>
+			<p>Here are some of my best and most comprehensive projects that showcase my full range of skills.</p>
 			
-			<section class="projects-container">
-				<div class="projects-container">
-					<div class="project-card">
-						<h3>Movies Store</h3>
-						<p>A full-stack web application built with Django, SQL, Python, HTML, and CSS that lets users browse movies, create accounts or log in, and write reviews. It also includes functionality for purchasing movies and managing user data. I developed it using Git and Bash for version control and deployment.</p>
-						<a href="https://github.com/kaylee162/moviesstore.git" target="_blank" class="button">Link to GitHub Repository</a>
+			<div class="featured-grid">
+				<div class="featured-card">
+					<h3>Job Seekers</h3>
+					<div class="tech-stack">
+						<span class="tech-badge">Django</span>
+						<span class="tech-badge">Python</span>
+						<span class="tech-badge">Google Maps API</span>
+						<span class="tech-badge">SQL</span>
+						<span class="tech-badge">HTML/CSS</span>
+						<span class="tech-badge">JavaScript</span>
 					</div>
-
-					<div class="project-card">
-						<h3>Expense Tracker</h3>
-						<p>A program that allows users to input and categorize expenses, providing visualizations of their spending habits.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-
-					<div class="project-card">
-						<h3>Snake Game</h3>
-						<p>A classic snake game using Pygame library. Includes features like increasing speed as the snake grows and saving high scores. </p>
-						<a href="https://github.com/kaylee162/SnakeGame.git" target="_blank" class="button">Link to GitHub Repository</a>
+					<p>A web application designed to help Georgia Tech students streamline their job search process. Built with Django, the platform integrates job listings, application tracking, and employer engagement tools into one dashboard. Features include personalized job recommendations, Google Maps integration for location-based search, and a clean, user-friendly interface.</p>
+					<div class="button-group">
+						<a href="https://github.com/kaylee162/GTJobSearch.git" target="_blank" class="button">GitHub</a>
 					</div>
 				</div>
-			</section>
 
-		</section>
-		
-		<section id="html">
-			<h2>HTML and CSS Projects</h2>
-			<p>HTML and CSS form the foundation of my front-end development work. I’ve designed sleek, responsive websites with a focus on user experience and visual appeal. These projects highlight my creativity and attention to detail.</p>
-
-			<section class="projects-container">
-				<div class="projects-container">
-					<div class="project-card">
-						<h3>Personal Portfolio Website</h3>
-						<p>The website you’re currently viewing, built to showcase my skills and projects.</p>
-						<a href="https://github.com/kaylee162/PortfolioWebsite.git" target="_blank" class="button">Link to GitHub Repository</a>
+				<div class="featured-card">
+					<h3>Movies Store</h3>
+					<div class="tech-stack">
+						<span class="tech-badge">Django</span>
+						<span class="tech-badge">Python</span>
+						<span class="tech-badge">SQL</span>
+						<span class="tech-badge">HTML/CSS</span>
 					</div>
-
-					<div class="project-card">
-						<h3>Timeshares Website</h3>
-						<p>A modern website used for timeshares in various locations. Includes features that allow users to search locations, view prices, and scroll through gallery images.</p>
-						<a href="https://www.sweetdealvacationrentals.com/index.html" target="_blank" class="button">Link to Website</a>
-					</div>
-
-					<div class="project-card">
-						<h3>Minecraft Webpage</h3>
-						<p>A website that includes information about coding inside of Minecraft using a mod called "WorldEdit." Includes an image gallery, contact page, and advanced navigation system.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
+					<p>A full-stack web application that lets users browse movies, create accounts, write reviews, and purchase movies. Features user authentication, database management, and responsive design. Developed using Git and Bash for version control.</p>
+					<div class="button-group">
+						<a href="https://github.com/kaylee162/moviesstore.git" target="_blank" class="button">GitHub</a>
 					</div>
 				</div>
-			</section>
-		</section>
-		
-		<section id="js">
-			<h2>JavaScript Projects</h2>
-			<p>JavaScript is the language I use to bring websites to life. From creating dynamic content to adding interactive features, JavaScript helps me build engaging user experiences. My projects showcase my ability to solve problems and write efficient, maintainable code.</p>
 
-			<section class="projects-container">
-				<div class="projects-container">
-					<div class="project-card">
-						<h3>Interactive To-Do List</h3>
-						<p>A web app that allows users to add, edit, and delete tasks, with real-time updates.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
+				<div class="featured-card">
+					<h3>Personal Portfolio Website</h3>
+					<div class="tech-stack">
+						<span class="tech-badge">HTML</span>
+						<span class="tech-badge">CSS</span>
+						<span class="tech-badge">JavaScript</span>
 					</div>
-
-					<div class="project-card">
-						<h3>Trivia Quiz Game</h3>
-						<p>A fun and interactive quiz game with randomized questions and a scoring system.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
-					</div>
-		
-					<div class="project-card">
-						<h3>E-Commerce Shopping Cart</h3>
-						<p>A simple E-Commerce webpage where users can add itmes to a cart, update quantities, and see a live total.</p>
-						<a href="" target="_blank" class="button">Link to GitHub Repository</a>
+					<p>The website you're currently viewing! A fully responsive portfolio site showcasing my projects, skills, and experience. Features a mobile-friendly navigation system, contact form, and modern design principles.</p>
+					<div class="button-group">
+						<a href="https://github.com/kaylee162/PortfolioWebsite.git" target="_blank" class="button">GitHub</a>
 					</div>
 				</div>
-			</section>
+
+				<div class="featured-card">
+					<h3>Minesweeper</h3>
+					<div class="tech-stack">
+						<span class="tech-badge">Java</span>
+						<span class="tech-badge">Swing GUI</span>
+					</div>
+					<p>A classic minesweeper game with a graphical user interface built using Java Swing. Features include bomb detection, flagging system, and recursive field clearing algorithm.</p>
+					<div class="button-group">
+						<a href="https://github.com/kaylee162/Minesweeper.git" target="_blank" class="button">GitHub</a>
+					</div>
+				</div>
+
+				<div class="featured-card">
+					<h3>Library Management System</h3>
+					<div class="tech-stack">
+						<span class="tech-badge">Java</span>
+						<span class="tech-badge">OOP</span>
+					</div>
+					<p>A comprehensive program that allows users to manage a virtual library with features to add, search, borrow, return, and view books. Demonstrates strong object-oriented programming principles.</p>
+					<div class="button-group">
+						<a href="https://github.com/kaylee162/LibraryManagement.git" target="_blank" class="button">GitHub</a>
+					</div>
+				</div>
+
+				<div class="featured-card">
+					<h3>Library Management System</h3>
+					<div class="tech-stack">
+						<span class="tech-badge">Java</span>
+						<span class="tech-badge">OOP</span>
+					</div>
+					<p>A comprehensive program that allows users to manage a virtual library with features to add, search, borrow, return, and view books. Demonstrates strong object-oriented programming principles.</p>
+					<div class="button-group">
+						<a href="https://github.com/kaylee162/LibraryManagement.git" target="_blank" class="button">GitHub</a>
+					</div>
+				</div>
+			</div>
 		</section>
 
+		<!--Stats Bar-->
+		<section class="projects-stats">
+			<div class="stats-grid">
+				<div class="stat-item">
+					<h3>25+</h3>
+					<p>Total Projects</p>
+				</div>
+				<div class="stat-item">
+					<h3>8</h3>
+					<p>Languages & Frameworks</p>
+				</div>
+				<div class="stat-item">
+					<h3>5</h3>
+					<p>Featured Projects</p>
+				</div>
+				<div class="stat-item">
+					<h3>∞</h3>
+					<p>Ideas to Build</p>
+				</div>
+			</div>
+		</section>
+
+		<!--React Projects Section-->
+		<section id="react" class="language-section">
+			<h2><span class="section-icon">⚛️</span> React & Vite Projects</h2>
+			<p>React is my framework of choice for building modern, interactive user interfaces. Combined with Vite for fast development, these projects showcase component-based architecture, state management, and reactive UI patterns.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Interactive Dashboard</h3>
+					<p>A data visualization dashboard built with React and Recharts. Features real-time data updates, interactive charts, and responsive design for monitoring key metrics.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Weather App</h3>
+					<p>A weather application using React hooks and external API integration. Displays current weather, forecasts, and location-based data with a clean, modern interface.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+	
+				<div class="project-card">
+					<h3>Task Manager</h3>
+					<p>A full-featured task management app built with React. Includes task creation, editing, filtering, and local storage persistence using React hooks and context API.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Component Library</h3>
+					<p>A reusable component library built with Vite showcasing modern UI components. Includes buttons, forms, modals, and cards with customizable themes.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+			</div>
+		</section>
+
+		<!--Node.js Projects Section-->
+		<section id="nodejs" class="language-section">
+			<h2><span class="section-icon">📗</span> Node.js Projects</h2>
+			<p>Node.js enables me to build scalable backend applications and APIs. These projects demonstrate my ability to work with server-side JavaScript, databases, and real-time communication.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>REST API Server</h3>
+					<p>A RESTful API built with Express.js featuring CRUD operations, authentication middleware, and MongoDB integration. Includes comprehensive error handling and validation.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Real-time Chat Application</h3>
+					<p>A chat application using Socket.io for real-time bidirectional communication. Features include multiple chat rooms, user presence indicators, and message history.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+	
+				<div class="project-card">
+					<h3>Authentication System</h3>
+					<p>A secure authentication system with JWT tokens, password hashing, and role-based access control. Implements best practices for user security and session management.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>File Upload Service</h3>
+					<p>A file management service built with Node.js and Multer. Handles file uploads, validation, storage, and retrieval with support for multiple file types.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+			</div>
+		</section>
+
+		<!--Django Projects Section-->
+		<section id="django" class="language-section">
+			<h2><span class="section-icon">🚀</span> Django Projects</h2>
+			<p>Django is my preferred Python framework for building robust, full-stack web applications. These projects showcase my ability to work with MVC architecture, ORM, and server-side rendering.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Job Seekers</h3>
+					<p>A web application designed to help Georgia Tech students streamline their job search process. Built with Django, the platform integrates job listings, application tracking, and employer engagement tools into one dashboard. Features include personalized job recommendations, Google Maps integration for location-based search, and a clean, user-friendly interface.</p>
+					<a href="https://github.com/kaylee162/GTJobSearch.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Movies Store</h3>
+					<p>A full-stack web application built with Django, SQL, Python, HTML, and CSS that lets users browse movies, create accounts, and write reviews. Features purchasing functionality and user data management.</p>
+					<a href="https://github.com/kaylee162/moviesstore.git" class="button">GitHub</a>
+				</div>
+	
+				<div class="project-card">
+					<h3>E-commerce Backend</h3>
+					<p>A Django-based e-commerce backend with product catalog, shopping cart, order processing, and payment integration. Includes inventory management and order tracking.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Social Network</h3>
+					<p>A social networking application with user profiles, friend connections, post feeds, and real-time notifications. Built using Django channels for WebSocket support.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+			</div>
+		</section>
+
+		<!--Java Projects Section-->
+		<section id="java" class="language-section">
+			<h2><span class="section-icon">☕</span> Java Projects</h2>
+			<p>Java was one of the first programming languages I learned, and it taught me the fundamentals of object-oriented programming. I've used Java to develop a variety of projects, from solving complex algorithms to building interactive applications.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Library Management System</h3>
+					<p>A program that allows users to add, search, borrow and return, and view books from a virtual library. Demonstrates object-oriented design principles and file handling.</p>
+					<a href="https://github.com/kaylee162/LibraryManagement.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Maze Solver</h3>
+					<p>An algorithm-based solution for finding the shortest path through a maze using depth-first search. Includes maze generation and visualization features.</p>
+					<a href="https://github.com/kaylee162/MazeSolver.git" class="button">GitHub</a>
+				</div>
+	
+				<div class="project-card">
+					<h3>Banking App</h3>
+					<p>An application that allows users to create accounts, deposit and withdraw money, and view transaction history. Data persistence implemented using file I/O operations.</p>
+					<a href="https://github.com/kaylee162/Banking.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Minesweeper</h3>
+					<p>A classic minesweeper game with a graphical user interface (GUI). Includes features like digging up bombs, flagging potential ones, and recursive field clearing.</p>
+					<a href="https://github.com/kaylee162/Minesweeper.git" class="button">GitHub</a>
+				</div>
+			</div>
+		</section>
+		
+		<!--C# Projects Section-->
+		<section id="csharp" class="language-section">
+			<h2><span class="section-icon">🎮</span> C# Projects</h2>
+			<p>C# has been my go-to language for creating game mechanics and interactive applications. I've worked with C# in game engines like Unity to bring my ideas to life, demonstrating critical thinking and creativity.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Alarm System</h3>
+					<p>A multithreaded C# program that lets users create and manage countdown alarms. Each alarm runs independently as its own thread with real-time status updates and interruption handling.</p>
+					<a href="https://github.com/kaylee162/AlarmSystem.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>FibCalc</h3>
+					<p>A C# program that calculates Fibonacci numbers using both iterative and formula-based approaches, demonstrating polymorphism through an interface. Handles user input with comprehensive validation.</p>
+					<a href="https://github.com/kaylee162/FibCalc.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Quiz Game</h3>
+					<p>An interactive quiz game with multiple-choice questions, a countdown timer, and a dynamic scoring system. Features question randomization and difficulty levels.</p>
+					<a href="https://github.com/kaylee162/QuizGame.git" class="button">GitHub</a>
+				</div>
+	
+				<div class="project-card">
+					<h3>Online Store</h3>
+					<p>A multithreaded C# program simulating a store selling merchandise from shared storage. Ensures thread-safe operations while tracking total revenue and items sold.</p>
+					<a href="https://github.com/kaylee162/OnlineStore.git" class="button">GitHub</a>
+				</div>
+			</div>
+		</section>
+		
+		<!--Python Projects Section-->
+		<section id="python" class="language-section">
+			<h2><span class="section-icon">🐍</span> Python Projects</h2>
+			<p>Python is a language I love for its simplicity and versatility. I've used Python to tackle data analysis problems, create scripts for automation, and explore the fundamentals of machine learning.</p>
+			
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Expense Tracker</h3>
+					<p>A program that allows users to input and categorize expenses, providing visualizations of their spending habits using matplotlib. Includes data export and budget alerts.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Snake Game</h3>
+					<p>A classic snake game using the Pygame library. Features include increasing speed as the snake grows, collision detection, and high score persistence.</p>
+					<a href="https://github.com/kaylee162/SnakeGame.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Web Scraper</h3>
+					<p>An automated web scraping tool using BeautifulSoup and requests. Extracts data from websites, processes it, and exports to CSV format for analysis.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Password Manager</h3>
+					<p>A secure password management system with encryption. Features include password generation, secure storage, and retrieval with master password protection.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+			</div>
+		</section>
+		
+		<!--HTML and CSS Projects Section-->
+		<section id="html" class="language-section">
+			<h2><span class="section-icon">🎨</span> HTML and CSS Projects</h2>
+			<p>HTML and CSS form the foundation of my front-end development work. I've designed sleek, responsive websites with a focus on user experience and visual appeal.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Personal Portfolio Website</h3>
+					<p>The website you're currently viewing, built to showcase my skills and projects. Features responsive design, smooth navigation, and modern CSS techniques.</p>
+					<a href="https://github.com/kaylee162/PortfolioWebsite.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Timeshares Website</h3>
+					<p>A modern website for timeshares in various locations. Includes features that allow users to search locations, view prices, and scroll through gallery images.</p>
+					<a href="https://www.sweetdealvacationrentals.com/index.html" class="button">Live Site</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Minecraft Webpage</h3>
+					<p>A website that includes information about coding inside of Minecraft using a mod called "WorldEdit." Features an image gallery, contact page, and advanced navigation system.</p>
+					<a href="https://github.com/kaylee162/WorldEdit.git" class="button">GitHub</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Restaurant Landing Page</h3>
+					<p>A modern, responsive landing page for a restaurant featuring menu sections, reservation system, and location information. Built with pure HTML and CSS.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+			</div>
+		</section>
+		
+		<!--JavaScript Projects Section-->
+		<section id="js" class="language-section">
+			<h2><span class="section-icon">💻</span> JavaScript Projects</h2>
+			<p>JavaScript is the language I use to bring websites to life. From creating dynamic content to adding interactive features, JavaScript helps me build engaging user experiences.</p>
+
+			<div class="projects-container">
+				<div class="project-card">
+					<h3>Interactive To-Do List</h3>
+					<p>A web app that allows users to add, edit, and delete tasks with real-time updates. Features include task filtering, completion tracking, and data persistence.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Trivia Quiz Game</h3>
+					<p>A fun and interactive quiz game with randomized questions from multiple categories. Includes a scoring system, timer, and leaderboard functionality.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+	
+				<div class="project-card">
+					<h3>E-Commerce Shopping Cart</h3>
+					<p>A simple e-commerce webpage where users can add items to a cart, update quantities, and see a live total. Features product filtering and checkout summary.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+
+				<div class="project-card">
+					<h3>Calculator App</h3>
+					<p>A fully functional calculator with standard arithmetic operations, memory functions, and keyboard support. Built with vanilla JavaScript and modern CSS.</p>
+					<a href="#" class="button">GitHub (Coming Soon)</a>
+				</div>
+			</div>
+		</section>
 
 		<footer class="footer">
 			<div class="footer-container">
-				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<p>&copy; 2025 Kaylee Henry. All rights reserved.</p>
 				<div class="contact-info">
 					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
-            				<p>Phone: (678) 579-7458</p>
-					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kayleehenry162</a></p>
+            		<p>Phone: (678) 579-7458</p>
+					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kaylee162</a></p>
 					<p>LinkedIn: <a href="https://www.linkedin.com/in/kaylee-henry-769357313/" target="_blank">LinkedIn Profile</a></p>
 				</div>
 			</div>

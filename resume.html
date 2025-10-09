@@ -12,6 +12,7 @@
 		<link rel="icon" type="image/x-icon" href="favicon.png">
 		<!--Fonts-->
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 		<!--Link to CSS Stylesheet and JS Script-->
 		<link rel="stylesheet" href="styles.css">
@@ -23,37 +24,135 @@
 
 		<!--NavBar-->
 		<nav class="navbar">
-			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
-        		<ul class="nav-links">
-            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+			<div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰ Menu</div>
+        	<ul class="nav-links">
+            	<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
 				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
-      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+      			<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
 				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
 				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
-        		</ul>
+        	</ul>
 		</nav>
 
 		<script>
-		function toggleMenu() {
-  			const navLinks = document.querySelector(".nav-links");
-  			navLinks.classList.toggle("show");
-		}
-
+			function toggleMenu() {
+  				const navLinks = document.querySelector(".nav-links");
+  				navLinks.classList.toggle("show");
+			}
 		</script>
 
-		<!--All Content on WebPage-->
-		<div class="resume-container">
-			<iframe src="resume_kaylee_henry.pdf" title="My Resume"></iframe>
-			<a href="resume_kaylee_henry.docx" class="download-link" download>Download my Resume (DOCX)</a>
-		</div>
+		<!--Resume Hero Section-->
+		<section class="resume-hero">
+			<h1>My Resume</h1>
+			<p>
+				Download my resume to learn more about my education, experience, and technical skills. 
+				Available in multiple formats for your convenience.
+			</p>
+		</section>
 
-		<br><br>
+		<!--Download Section-->
+		<section class="download-section">
+			<div class="download-buttons">
+				<a href="resume_kaylee_henry.pdf" class="download-btn" download>
+					<span class="download-btn-icon">📄</span>
+					Download PDF
+				</a>
+				<a href="resume_kaylee_henry.docx" class="download-btn" download>
+					<span class="download-btn-icon">📝</span>
+					Download DOCX
+				</a>
+			</div>
+			<p class="print-note">Tip: You can also open the PDF below and print directly from your browser.</p>
+		</section>
 
+		<!--Resume Viewer Section-->
+		<section class="resume-viewer-section">
+			<h2>Preview My Resume</h2>
+			<div class="resume-container">
+				<iframe src="resume_kaylee_henry.pdf" title="Kaylee Henry Resume PDF Preview"></iframe>
+			</div>
+		</section>
+
+		<!--Resume Highlights Section-->
+		<section class="resume-highlights">
+			<h2>Resume Highlights</h2>
+			<div class="highlights-grid">
+				<div class="highlight-card">
+					<div class="highlight-icon">🎓</div>
+					<h3>Education</h3>
+					<p>Computer Science student at Georgia Institute of Technology with a focus on software development and front-end engineering.</p>
+				</div>
+				
+				<div class="highlight-card">
+					<div class="highlight-icon">💼</div>
+					<h3>Experience</h3>
+					<p>Hands-on experience building full-stack web applications, game mechanics, and responsive user interfaces across multiple platforms.</p>
+				</div>
+								
+				<div class="highlight-card">
+					<div class="highlight-icon">🚀</div>
+					<h3>Projects</h3>
+					<p>25+ completed projects spanning Java, C#, Python, JavaScript, React, Node.js, Django, and more.</p>
+				</div>
+			</div>
+		</section>
+
+		<!--Skills Summary Section-->
+		<section class="skills-summary">
+			<h2>Technical Skills Summary</h2>
+			<div class="skills-categories">
+				<div class="skill-category-card">
+					<h3>Languages</h3>
+					<ul>
+						<li>JavaScript/TypeScript</li>
+						<li>Python</li>
+						<li>Java</li>
+						<li>C#</li>
+						<li>HTML/CSS</li>
+						<li>SQL</li>
+					</ul>
+				</div>
+				
+				<div class="skill-category-card">
+					<h3>Frameworks</h3>
+					<ul>
+						<li>React</li>
+						<li>Node.js/Express</li>
+						<li>Django</li>
+						<li>Vite</li>
+						<li>Unity</li>
+					</ul>
+				</div>
+							
+				<div class="skill-category-card">
+					<h3>Soft Skills</h3>
+					<ul>
+						<li>Problem Solving</li>
+						<li>Team Collaboration</li>
+						<li>Communication</li>
+						<li>Leadership</li>
+						<li>Time Management</li>
+						<li>Adaptability</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!--CTA Section-->
+		<section class="cta-resume">
+			<h2>Ready to Work Together?</h2>
+			<p>
+				If you'd like to discuss opportunities, collaboration, or just want to connect, 
+				I'd love to hear from you. Let's build something great together.
+			</p>
+			<a href="contact.html" class="button">Get In Touch</a>
+			<a href="projects.html" class="button">View My Projects</a>
+		</section>
 
 
 		<footer class="footer">
 			<div class="footer-container">
-				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<p>&copy; 2025 Kaylee Henry. All rights reserved.</p>
 				<div class="contact-info">
 					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
             				<p>Phone: (678) 579-7458</p>
