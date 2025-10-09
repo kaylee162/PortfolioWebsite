@@ -13,6 +13,7 @@
 
 		<!--Fonts-->
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 		<!--Link to CSS Stylesheet and JS Script-->
 		<link rel="stylesheet" href="styles.css">
@@ -24,57 +25,166 @@
 
 		<!--NavBar-->
 		<nav class="navbar">
-			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
-        		<ul class="nav-links">
-            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+			<div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰ Menu</div>
+        	<ul class="nav-links">
+            	<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
 				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
-      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+      			<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
 				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
 				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
-        		</ul>
+        	</ul>
 		</nav>
 
 		<script>
-		function toggleMenu() {
-  			const navLinks = document.querySelector(".nav-links");
-  			navLinks.classList.toggle("show");
-		}
+			function toggleMenu() {
+  				const navLinks = document.querySelector(".nav-links");
+  				navLinks.classList.toggle("show");
+			}
+		</script>
 
+		<!--Contact Hero Section-->
+		<section class="contact-hero">
+			<h1>Get In Touch</h1>
+			<p>
+				I'd love to hear from you! Whether you have a project in mind, want to collaborate, 
+				or just want to say hello, feel free to reach out using any of the methods below.
+			</p>
+		</section>
+
+		<!--Contact Content Section-->
+		<section class="contact-content">
+			<!-- Contact Info Side -->
+			<div class="contact-info-section">
+				<h2>Let's Connect</h2>
+				<p>
+					I'm always open to discussing new opportunities, interesting projects, 
+					or potential collaborations. I typically respond within 24-48 hours.
+				</p>
+				
+				<div class="contact-methods">
+					<div class="contact-method">
+						<div class="contact-icon">📧</div>
+						<div class="contact-details">
+							<h3>Email</h3>
+							<p><a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
+						</div>
+					</div>
+					
+					<div class="contact-method">
+						<div class="contact-icon">📱</div>
+						<div class="contact-details">
+							<h3>Phone</h3>
+							<p><a href="tel:+16785797458">(678) 579-7458</a></p>
+						</div>
+					</div>
+					
+					<div class="contact-method">
+						<div class="contact-icon">📍</div>
+						<div class="contact-details">
+							<h3>Location</h3>
+							<p>Atlanta, Georgia, US</p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="social-links">
+					<h3>Find Me Online</h3>
+					<div class="social-buttons">
+						<a href="https://github.com/kaylee162" target="_blank" class="social-btn" aria-label="GitHub Profile">
+							💻
+						</a>
+						<a href="https://www.linkedin.com/in/kaylee-henry-769357313/" target="_blank" class="social-btn" aria-label="LinkedIn Profile">
+							💼
+						</a>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Contact Form Side -->
+			<div class="contact-form-section">
+				<h2>Send Me a Message</h2>
+				<div class="body-contact">
+					<form id="contact-form" action="https://formspree.io/f/mdklvdak" method="POST">
+						<p class="form-intro">Fill out the form below and I'll get back to you as soon as possible.</p>
+
+						<div class="form-group">
+							<label for="name">Your Name</label>
+							<input type="text" id="name" name="name" placeholder="John Doe" required>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Your Email</label>
+							<input type="email" id="email" name="email" placeholder="john@example.com" required>
+						</div>
+
+						<div class="form-group">
+							<label for="message">Your Message</label>
+							<textarea id="message" name="message" rows="5" placeholder="Tell me about your project or inquiry..." required></textarea>
+						</div>
+
+						<input type="hidden" name="_subject" value="New contact form submission from your portfolio">
+						<button type="submit" id="submit-btn">Send Message</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<!--Response Time Section-->
+		<section class="response-time">
+			<h2>What to Expect</h2>
+			<p>
+				After you send your message, I'll review it and get back to you within 24-48 hours. 
+				I'm based in Atlanta, Georgia (EST/EDT timezone). If your inquiry is urgent, 
+				feel free to reach out via phone or email directly.
+			</p>
+		</section>
+
+		<script>
+		document.getElementById('contact-form').addEventListener('submit', async function (e) {
+			e.preventDefault();
+			const form = e.target;
+			const btn = document.getElementById('submit-btn');
+			const originalText = btn.textContent;
+			
+			btn.disabled = true;
+			btn.textContent = 'Sending...';
+			
+			const formData = new FormData(form);
+
+			try {
+				const res = await fetch(form.action, {
+					method: form.method,
+					body: formData,
+					headers: { 'Accept': 'application/json' }
+				});
+
+				if (res.ok) {
+					// Successful — send user to thank-you page
+					window.location.href = 'https://kaylee162.github.io/PortfolioWebsite/thank-you.html';
+				} else {
+					// Show error messages returned from Formspree
+					const data = await res.json().catch(() => ({}));
+					if (data && data.errors) {
+						alert(data.errors.map(e => e.message).join('\n'));
+					} else {
+						alert('There was a problem submitting the form. Please try again.');
+					}
+					btn.disabled = false;
+					btn.textContent = originalText;
+				}
+			} catch (err) {
+				console.error('Network or CORS error:', err);
+				alert('Network error. Please try again later.');
+				btn.disabled = false;
+				btn.textContent = originalText;
+			}
+		});
 		</script>
 
 
-		<!--All Content on WebPage-->
-		<!--All Content on WebPage-->
-		<div class="body-contact">
-  			<form action="https://formspree.io/f/mdklvdak" method="POST">
-  				<p style="text-align:center;"><b>Contact me using this form and I'll get back to you ASAP</b></p>
-
-  				<div class="form-group">
-    				<label for="name">Name:</label><br>
-    				<input type="text" id="name" name="name" required><br><br>
-  				</div>
-
- 		 		<div class="form-group">
-    				<label for="email">Email:</label><br>
-    				<input type="email" id="email" name="email" required><br><br>
-  				</div>
-
-  				<div class="form-group">
-   					<label for="message">Message:</label><br>
-    				<textarea id="message" name="message" rows="5" required></textarea><br><br>
-  				</div>
-
-  				<input type="hidden" name="_subject" value="New contact form submission from your portfolio">
-				<input type="hidden" name="_redirect" value="https://kaylee162.github.io/PortfolioWebsite/thank-you.html">
-
-  				<button type="submit">Submit</button>
-			</form>
-
-		</div>	
-
 		<footer class="footer">
 			<div class="footer-container">
-				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<p>&copy; 2025 Kaylee Henry. All rights reserved.</p>
 				<div class="contact-info">
 					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
             				<p>Phone: (678) 579-7458</p>

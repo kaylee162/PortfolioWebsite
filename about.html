@@ -4,17 +4,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Learn more about Kaylee Henry - Computer Science student at Georgia Tech, Eagle Scout, and front-end developer passionate about creating user-friendly digital experiences.">
 
 		<!--Title Page-->
-		<title>Kaylee Henry</title>
+		<title>About Me | Kaylee Henry</title>
 
 		<!--Favicon-->
 		<link rel="icon" type="image/x-icon" href="favicon.png">
 
 		<!--Fonts-->
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-		<!--Link to CSS Stylesheet and JS Script-->
+		<!--Link to CSS Stylesheet-->
 		<link rel="stylesheet" href="styles.css">
 	</head>
 
@@ -24,82 +25,226 @@
 
 		<!--NavBar-->
 		<nav class="navbar">
-			<div class="menu-toggle" onclick="toggleMenu()">Menu</div>
-        		<ul class="nav-links">
-            			<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
+			<div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰ Menu</div>
+        	<ul class="nav-links">
+            	<li><a href="index.html" style="color: #FFFFFF">Home</a></li>
 				<li><a href="about.html" style="color: #FFFFFF">About Me</a></li>
-      				<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
+      			<li><a href="projects.html" style="color: #FFFFFF">Projects</a></li>
 				<li><a href="resume.html" style="color: #FFFFFF">Resume</a></li>
 				<li><a href="contact.html" style="color: #FFFFFF">Contact</a></li>            
-        		</ul>
+        	</ul>
 		</nav>
 
 		<script>
-		function toggleMenu() {
-  			const navLinks = document.querySelector(".nav-links");
-  			navLinks.classList.toggle("show");
-		}
-
+			function toggleMenu() {
+  				const navLinks = document.querySelector(".nav-links");
+  				navLinks.classList.toggle("show");
+			}
 		</script>
 
-		<!--All Content on WebPage-->
-		
-		<p>
-		Hi, I'm Kaylee Henry, a passionate and driven Computer Science student currently pursuing my degree at Kennesaw State University. I graduated from Georgia Connections Academy in May of 2024.<br><br>
-		I specialize in front-end development, but my interests span across various areas of software development, including web design, graphic design, and video game development. I am dedicated to building sleek, user-friendly designs and creating meaningful, functional digital experiences.<br><br>
-		When I’m not coding, I enjoy staying active by running, hiking and biking, as well as exploring new places. I'm also an Eagle Scout, an accomplishment that I earned through my dedication to leadership, teamwork, and giving back to the community.
-		</p>
-		
-		<!-- Gallery Section -->
-		<section class="gallery">
-    			<div class="gallery-item">
-        			<img src="pic1.jpg">
-    			</div>
-    			<div class="gallery-item">
-        			<img src="pic2.jpg">
-    			</div>
-    			<div class="gallery-item">
-        			<img src="pic3.jpg">
-    			</div>
+		<!--Hero Section-->
+		<section class="about-hero">
+			<h1>About Me</h1>
+			<p>
+				Computer Science student, front-end developer, and Eagle Scout passionate about building 
+				meaningful digital experiences that make a difference.
+			</p>
 		</section>
 
-		<h2>My Skills</h2>
-		<p>
-		<b>Programming Languages</b><br></p>
+		<!--My Story Section-->
+		<section class="story-section">
+			<h2>My Story</h2>
+			<div class="story-content">
+				<p>
+					I'm Kaylee Henry, a Computer Science student at Georgia Institute of Technology with a 
+					strong focus on front-end development. I graduated from Georgia Connections Academy in 2024 
+					and have been building my skills in web development, software engineering, and creative design ever since.
+				</p>
+				<p>
+					I'm passionate about creating clean, user-friendly digital experiences—from responsive web applications 
+					to interactive game mechanics. My goal is to combine solid technical skills with an eye for design 
+					to deliver work that feels both functional and intuitive. I believe great software should solve real 
+					problems while being a joy to use.
+				</p>
+				<p>
+					As an Eagle Scout, I completed over 400 hours of community service, an experience that fundamentally 
+					shaped my approach to leadership, teamwork, and giving back. Whether I'm debugging code, designing 
+					a user interface, or collaborating with a team, I bring the same dedication and problem-solving 
+					mindset that helped me achieve my Eagle rank.
+				</p>
+				<p>
+					Outside of coding, you'll usually find me staying active—running, hiking, biking, or exploring new 
+					places. I believe in maintaining balance and finding inspiration beyond the screen, which often leads 
+					to my best creative breakthroughs.
+				</p>
+			</div>
+		</section>
 
-		<li>Java: Proficient in building object-oriented applications and solving problems with clean, reusable code.</li>
-		<li>C#: Experienced in developing interactive programs and game mechanics.</li>
-		<li>HTML/CSS/JavaScript: Skilled in designing responsive, user-centered websites.</li>
-		<li>Python: Comfortable with scripting, data manipulation, and algorithm development.</li>
+		<!-- Photo Gallery Section -->
+		<section class="gallery-section">
+			<h2>Beyond the Code</h2>
+			<div class="gallery">
+				<div class="gallery-item">
+				<a href="pic1.jpg" target="_blank">
+					<img src="pic1.jpg" alt="Kaylee Henry outdoor activity" loading="lazy">
+				</a>
+				<p class="caption">Graduating high school with a strong passion for technology</p>
+				</div>
 
-		<p><b>Software Development</b></p>
-		<li>Familiar with creating web applications, debugging, and testing code for optimized performance.</li>
-		<li>Experience with data structures and algorithms, making me well-versed in computational thinking.</li>
+				<div class="gallery-item">
+				<a href="pic2.jpg" target="_blank">
+					<img src="pic2.jpg" alt="Kaylee Henry community service" loading="lazy">
+				</a>
+				<p class="caption">Earning my Eagle Scout Rank after giving back to my community</p>
+				</div>
 
-		<p><b>Game Development</b></p>
-		<li>Hands-on experience with Unity for creating engaging, interactive projects.</li>
-		<li>Knowledgeable in designing 2D and 3D environments with clean UI components.</li>
-		
-		<p><b>Graphic Design</b></p>
-		<li>Creative in designing layouts, logos, and website graphics to complement my development work.</li>
-		</p>
-
-		<h2>Why Work With Me?</h2>
-		<p>
-		With over 400+ hours of community service, I bring dedication, teamwork, and leadership to everything I do. I take pride in my ability to learn quickly, adapt to new challenges, and collaborate with others to achieve goals.<br><br>
-		Whether you're interested in exploring my projects, hiring me for a development opportunity, or just want to connect, I would love to hear from you!<br><br>
-		<a href="contact.html">Visit My Contact Page</a>
-		</p>
+				<div class="gallery-item">
+				<a href="pic4.jpg" target="_blank">
+					<img src="pic4.jpg" alt="Kaylee Henry adventure" loading="lazy">
+				</a>
+				<p class="caption">Traveling and seeking new experiences like sailing in the Gulf</p>
+				</div>
+			</div>
+		</section>
 
 
+		<!--Technical Skills Section-->
+		<section class="skills-detailed-section">
+			<h2>Technical Skills</h2>
+			
+			<div class="skill-category">
+				<h3><span class="skill-icon-large">💻</span> Programming Languages</h3>
+				<ul>
+					<li>Java: Object-oriented programming with a focus on clean, reusable code and design patterns</li>
+					<li>C#: Building interactive applications, game mechanics, and multithreaded systems</li>
+					<li>HTML/CSS/JavaScript: Responsive, user-centered web design with modern best practices</li>
+					<li>Python: Scripting, data manipulation, algorithm development, and automation</li>
+					<li>React: Component-based architecture with hooks and state management</li>
+					<li>Node.js: Server-side JavaScript for building scalable backend systems</li>
+				</ul>
+			</div>
 
+			<div class="skill-category">
+				<h3><span class="skill-icon-large">🚀</span> Software Development</h3>
+				<ul>
+					<li>Full-stack web application development with focus on front-end excellence</li>
+					<li>Debugging, testing, and performance optimization for production environments</li>
+					<li>Version control using Git with collaborative workflows on GitHub</li>
+					<li>Experience with Agile methodologies and sprint-based development</li>
+					<li>Strong foundation in data structures, algorithms, and computational thinking</li>
+					<li>RESTful API design and integration</li>
+					<li>Database management with SQL and Django ORM</li>
+				</ul>
+			</div>
+
+			<div class="skill-category">
+				<h3><span class="skill-icon-large">🎮</span> Game Development</h3>
+				<ul>
+					<li>Hands-on experience with Unity for 2D and 3D game projects</li>
+					<li>Creating engaging gameplay mechanics and interactive environments</li>
+					<li>Implementing physics systems and collision detection</li>
+					<li>Designing clean, intuitive UI components for games</li>
+					<li>Character controllers and animation systems</li>
+				</ul>
+			</div>
+			
+			<div class="skill-category">
+				<h3><span class="skill-icon-large">🎨</span> Design & Creative</h3>
+				<ul>
+					<li>UI/UX design with focus on user-centered design principles</li>
+					<li>Creating layouts, logos, and website graphics that complement development work</li>
+					<li>Proficient with design tools like Adobe Photoshop and Illustrator</li>
+					<li>Strong understanding of color theory, typography, and visual hierarchy</li>
+					<li>Ability to create cohesive branding and design systems</li>
+					<li>Wireframing and prototyping with Figma</li>
+				</ul>
+			</div>
+		</section>
+
+		<!--Values Section-->
+		<section class="values-section">
+			<h2>What Drives Me</h2>
+			<div class="values-grid">
+				<div class="value-card">
+					<div class="value-icon">🎯</div>
+					<h3>Problem Solving</h3>
+					<p>
+						I thrive on tackling complex challenges and finding elegant solutions. Every bug is a 
+						puzzle, every feature is an opportunity to innovate.
+					</p>
+				</div>
+				
+				<div class="value-card">
+					<div class="value-icon">🤝</div>
+					<h3>Collaboration</h3>
+					<p>
+						My experience as an Eagle Scout taught me that the best results come from working 
+						together. I value open communication and diverse perspectives.
+					</p>
+				</div>
+				
+				<div class="value-card">
+					<div class="value-icon">📚</div>
+					<h3>Continuous Learning</h3>
+					<p>
+						Technology evolves rapidly, and so do I. I'm committed to staying current with new 
+						frameworks, languages, and best practices.
+					</p>
+				</div>
+				
+				<div class="value-card">
+					<div class="value-icon">✨</div>
+					<h3>User-First Design</h3>
+					<p>
+						Great code means nothing if users can't navigate it. I prioritize accessibility, 
+						usability, and creating delightful experiences.
+					</p>
+				</div>
+
+				<div class="value-card">
+					<div class="value-icon">📢</div>
+					<h3>Leadership</h3>
+					<p>
+						From leading Scout troops to project teams, I’ve learned how to inspire others, 
+						delegate effectively, and keep everyone focused on a shared goal.
+					</p>
+				</div>
+
+				<div class="value-card">
+					<div class="value-icon">🎨</div>
+					<h3>Creativity</h3>
+					<p>
+						I approach every project with imagination and originality, blending design thinking 
+						with technical skill to build experiences that stand out.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!--CTA Section-->
+		<section class="cta-about">
+			<h2>Let's Connect</h2>
+			<p>
+				I bring the same dedication and leadership that helped me complete over 400 hours of 
+				community service to every project I take on. I learn quickly, adapt easily, and thrive 
+				in collaborative environments.
+			</p>
+			<p>
+				If you're interested in my projects, have a development opportunity in mind, or just want to connect, 
+				I'd love to hear from you.
+			</p>
+			<a href="contact.html" class="button">Get In Touch</a>
+			<a href="projects.html" class="button">View My Work</a>
+		</section>
+
+		<!--Footer-->
 		<footer class="footer">
 			<div class="footer-container">
-				<p>&copy 2025 Kaylee Henry. All rights reserved.</p>
+				<p>&copy; 2025 Kaylee Henry. All rights reserved.</p>
 				<div class="contact-info">
 					<p>Email: <a href="mailto:kayleehenry162@gmail.com">kayleehenry162@gmail.com</a></p>
-            				<p>Phone: (678) 579-7458</p>
-					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kayleehenry162</a></p>
+            		<p>Phone: (678) 579-7458</p>
+					<p>GitHub: <a href="https://github.com/kaylee162" target="_blank">kaylee162</a></p>
 					<p>LinkedIn: <a href="https://www.linkedin.com/in/kaylee-henry-769357313/" target="_blank">LinkedIn Profile</a></p>
 				</div>
 			</div>
