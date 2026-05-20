@@ -4,7 +4,6 @@
 @tailwind utilities;
 
 
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; font-family: "Space Grotesk", system-ui, sans-serif; }
@@ -139,9 +138,41 @@ button, a { -webkit-tap-highlight-color: transparent; }
   box-shadow: 6px 6px 0 #242033;
 }
 .pixel-panel { padding: 2rem; background: #fff9ef; }
-.stat-card { background: #fff9ef; padding: 1.5rem; text-align: center; }
-.stat-card strong { display: block; font-family: "Press Start 2P", monospace; font-size: 1.7rem; margin-bottom: .8rem; }
-.stat-card span { font-weight: 800; text-transform: uppercase; }
+.stat-card {
+  background: #fff9ef;
+  padding: 1rem;
+  text-align: left;
+  min-height: 100%;
+}
+
+.stat-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-bottom: .65rem;
+  color: #f26d57;
+}
+
+.stat-card strong {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 1.05rem;
+  margin-bottom: .55rem;
+}
+
+.stat-card span {
+  display: block;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: .8rem;
+  letter-spacing: .08em;
+}
+
+.stat-card p {
+  margin-top: .65rem;
+  font-size: .9rem;
+  line-height: 1.5;
+  color: rgb(36 32 51 / 70%);
+}
 
 .filter-chip {
   border: 3px solid #242033;

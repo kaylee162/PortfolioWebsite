@@ -12,7 +12,7 @@ import {
   Star,
   Trophy,
 } from 'lucide-react'
-import profilePic from './assets/profilepic.jpg'
+import profilePic from './assets/profilepic2.jpg'
 import './App.css'
 
 const featuredProjects = [
@@ -75,29 +75,43 @@ const featuredProjects = [
 const skills = [
   'React',
   'Vite',
+  'Flask',
+  'Next.js',
+  'Express',
+  'MongoDB',
+  'Node.js',
+  'Vue.js',
   'Tailwind',
+  'Bootstrap',
+  'Django',
   'JavaScript',
   'Python',
-  'Django',
   'Java',
-  'C#',
   'C',
+  'C++',
+  'C#',
   'SQL',
+  'PostgreSQL',
+  '.NET',
+  'Typescript',
   'HTML/CSS',
   'Git',
   'UI/UX',
-  'Game Dev',
+  'Figma',
+  'Microsoft Office',
+  'Adobe Creative Suite',
+  'Agile Methodologies',
 ]
 
 const categories = ['All', 'React', 'Django', 'Game Dev', 'Java']
 
-function WindowFrame({ children, label = 'MEMBER', accent = 'bg-coral' }) {
+function WindowFrame({ children, label = 'DEVELOPER', accent = 'bg-coral' }) {
   return (
     <div className="window-frame shadow-pixel">
       <div className="browser-top">
         <div className="traffic"><span></span><span></span><span></span></div>
         <div className="tab">{label}</div>
-        <div className={`search-pill ${accent}`}>LOOKING FOR IMPACT !!!</div>
+        <div className={`search-pill ${accent}`}>CREATIVE AND INTERACTIVE!</div>
       </div>
       <div className="url-bar">
         <span className="refresh">↻</span>
@@ -140,13 +154,13 @@ function App() {
       <section id="home" className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-5 py-16 lg:grid-cols-[1.1fr_.9fr]">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border-3 border-ink bg-mint px-4 py-2 font-pixel text-sm shadow-pixel-sm">
-            <Sparkles size={16} /> front-end developer + designer
+            <Sparkles size={16} /> hi there, welcome to my portfolio!
           </p>
           <h1 className="font-display text-6xl font-black leading-[0.92] tracking-tight text-ink sm:text-7xl lg:text-8xl">
-            playful sites,<br /> clean code,<br /> better UX.
+            frontend dev,<br /> full stack dev,<br /> and design.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/75">
-            I’m Kaylee Henry, a Computer Science student at Georgia Tech building interactive web apps, dashboards, and game-inspired experiences with React, Django, JavaScript, Python, and strong visual design.
+            i’m kaylee henry, a computer science student at Georgia Tech building interactive web apps, dashboards, and game-inspired experiences with a variety of different langauges and frameworks, as well as a strong visual design!
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className="pixel-button bg-blue">view projects <ArrowUpRight size={18} /></a>
@@ -155,21 +169,21 @@ function App() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, scale: 0.92, rotate: -2 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.8, delay: 0.1 }}>
-          <WindowFrame label="MEMBER" accent="bg-coral">
+          <WindowFrame label="DEVELOPER" accent="bg-coral">
             <div className="member-card">
               <div className="photo-card">
-                <div className="name-plate">KAYLEE</div>
+                <div className="name-plate">KAYLEE HENRY</div>
                 <img src={profilePic} alt="Kaylee Henry" />
                 <MousePointer2 className="pointer-icon" fill="white" />
               </div>
               <div className="member-info">
-                <div className="heart-row">♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡</div>
+                <div className="heart-row">♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡</div>
                 <p><span>NAME</span> KAYLEE HENRY</p>
                 <p><span>ROLE</span> FRONT-END DEV</p>
                 <p><span>FOCUS</span> UI/UX + WEB APPS</p>
                 <div className="mini-panel">
                   <p>STATUS</p>
-                  <strong>BUILDING</strong>
+                  <strong>ALWAYS DESIGNING</strong>
                   <p>LOCATION</p>
                   <strong>ATLANTA, GA</strong>
                 </div>
@@ -183,21 +197,22 @@ function App() {
         <div className="grid gap-6 lg:grid-cols-[.75fr_1.25fr]">
           <div className="pixel-panel bg-lavender">
             <p className="section-kicker">welcome</p>
-            <h2 className="section-title">not just a resume page</h2>
+            <h2 className="section-title">hi, i’m kaylee!</h2>
             <p className="mt-4 leading-7 text-ink/75">
-              This redesign leans into the references: pixel UI, browser windows, soft pastel cards, tiny game details, and portfolio-slide polish. The goal is to make hiring managers want to click around while still finding the important information fast.
+              i’m a computer science student at Georgia Tech who loves building web apps, playful interfaces, and interactive digital experiences. this portfolio is a mix of my projects, design style, technical skills, and the creative details i bring into my work.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {[
-              ['25+', 'projects built'],
-              ['8+', 'languages + tools'],
-              ['400+', 'service hours'],
-            ].map(([stat, label]) => (
+              ['Frontend Dev', 'React, Node.js, Next.js, JavaScript', 'Building polished interfaces with reusable components, always with UI / UX and design in mind'],
+              ['Full-Stack Dev', 'Flask, Django, Python', 'Creating data-driven apps with auth, dashboards, and APIs. Experienced with SQL, PostgreSQL, and MongoDB databases'],
+              ['Game Development', 'GBA, C, C++, C#, Java', 'Designing sprites, tilemaps, collision, and interactive worlds. Currently building a GBA platformer with a unique growth mechanic!'],
+            ].map(([stat, label, detail]) => (
               <div key={label} className="stat-card">
-                <Trophy className="mx-auto mb-2" />
+                <Trophy className="stat-icon" />
                 <strong>{stat}</strong>
                 <span>{label}</span>
+                <p>{detail}</p>
               </div>
             ))}
           </div>
@@ -208,7 +223,7 @@ function App() {
         <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="section-kicker">project select</p>
-            <h2 className="section-title">featured builds</h2>
+            <h2 className="section-title">featured projects</h2>
           </div>
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
@@ -247,9 +262,9 @@ function App() {
           <div className="skills-grid">
             <div>
               <p className="section-kicker">toolbox</p>
-              <h2 className="section-title">design-minded engineering</h2>
+              <h2 className="section-title">design-minded engineering.</h2>
               <p className="mt-4 leading-7 text-ink/75">
-                I like building interfaces that feel intentional: clear navigation, responsive layouts, meaningful motion, and code that is easy to maintain.
+                i like building interfaces that feel intentional and have clear navigation, responsive layouts, meaningful motion, and code that is easy to maintain
               </p>
             </div>
             <div className="skill-cloud">
