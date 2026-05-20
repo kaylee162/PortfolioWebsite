@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import profilePic from './assets/profilepic2.jpg'
 import './App.css'
+import FlappyDuckGame from './FlappyDuckGame'
 
 const featuredProjects = [
   {
@@ -336,25 +337,8 @@ function App() {
               }}
             >
               {heroCardCleared ? (
-                <div className="member-card member-card-empty">
-                  <div>
-                    <p className="section-kicker">profile data cleared</p>
-                    <h2 className="section-title">ready for game data.</h2>
-                    <p className="mt-4 leading-7 text-ink/75">
-                      the refresh button works now. later, you can replace this empty state
-                      with your mini game reset logic.
-                    </p>
-
-                    <button
-                      type="button"
-                      className="pixel-button mt-6 bg-mint"
-                      onClick={() => setHeroCardCleared(false)}
-                    >
-                      restore profile
-                    </button>
-                  </div>
-                </div>
-              ) : (
+                  <FlappyDuckGame />
+                ) : (
                 <div className="member-card">
                   <div className="photo-card">
                     <div className="name-plate">KAYLEE HENRY</div>
