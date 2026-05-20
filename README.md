@@ -8,8 +8,8 @@ This site showcases my projects, technical experience, UI/UX work, and interacti
 
 Visit the portfolio here:
 
-```txt[
-https://YOUR-VERCEL-LINK.vercel.app](https://vercel.com/kaylee162s-projects/portfolio-website/CBhxc9ra294kDfz7ApYtcJnMm5eX)
+```txt
+https://portfolio-website-git-main-kaylee162s-projects.vercel.app/
 ```
 
 ## Tech Stack
