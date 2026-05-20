@@ -1,16 +1,83 @@
-# React + Vite
+# Kaylee Henry Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+This site showcases my projects, technical experience, UI/UX work, and interactive web design style. The portfolio focuses on combining clean front-end development with playful visuals and polished user experience details.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Site
 
-## React Compiler
+Visit the portfolio here:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```txt[
+https://YOUR-VERCEL-LINK.vercel.app](https://vercel.com/kaylee162s-projects/portfolio-website/CBhxc9ra294kDfz7ApYtcJnMm5eX)
+```
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* React
+* Vite
+* Tailwind CSS
+* Lucide React
+
+## Features
+
+* Interactive and responsive UI
+* Custom pixel-inspired design system
+* Animated components and hover interactions
+* Project showcase sections
+* Skills and experience highlights
+* Mobile-friendly layout
+* Interactive Easter Eggs
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/kaylee162/PortfolioWebsite.git
+```
+
+Move into the project folder:
+
+```bash
+cd portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The app will open locally through Vite, usually at:
+
+```txt
+http://localhost:5173
+```
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+## Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Deployment
+
+The site is deployed with Vercel for fast hosting and automatic deployments from GitHub.
+
+## Author
+
+Kaylee Henry
+Computer Science Student at Georgia Tech
