@@ -105,19 +105,58 @@ const skills = [
 
 const categories = ['All', 'React', 'Django', 'Game Dev', 'Java']
 
-function WindowFrame({ children, label = 'DEVELOPER', accent = 'bg-coral' }) {
+function WindowFrame({
+  children,
+  label = 'DEVELOPER',
+  accent = 'bg-coral',
+  interactive = false,
+  isMaximized = false,
+  onClose,
+  onMinimize,
+  onMaximize,
+  onRefresh,
+}) {
   return (
-    <div className="window-frame shadow-pixel">
+    <div className={`window-frame shadow-pixel ${isMaximized ? 'is-maximized' : ''}`}>
       <div className="browser-top">
-        <div className="traffic"><span></span><span></span><span></span></div>
+        <div className="traffic">
+          <button
+            type="button"
+            aria-label="Close window"
+            onClick={interactive ? onClose : undefined}
+          ></button>
+
+          <button
+            type="button"
+            aria-label="Minimize window"
+            onClick={interactive ? onMinimize : undefined}
+          ></button>
+
+          <button
+            type="button"
+            aria-label="Maximize window"
+            onClick={interactive ? onMaximize : undefined}
+          ></button>
+        </div>
+
         <div className="tab">{label}</div>
         <div className={`search-pill ${accent}`}>CREATIVE AND INTERACTIVE!</div>
       </div>
+
       <div className="url-bar">
-        <span className="refresh">↻</span>
+        <button
+          type="button"
+          className="refresh"
+          onClick={interactive ? onRefresh : undefined}
+          aria-label="Refresh card"
+        >
+          ↻
+        </button>
+
         <span className="url">https://kayleedesigns.dev</span>
         <span className="mailbox">✉</span>
       </div>
+
       {children}
     </div>
   )
@@ -126,6 +165,30 @@ function WindowFrame({ children, label = 'DEVELOPER', accent = 'bg-coral' }) {
 function App() {
   const [activeCategory, setActiveCategory] = useState('All')
 
+  const [heroWindowMode, setHeroWindowMode] = useState('open')
+  // open, minimized, closed, maximized
+
+  const [heroCardCleared, setHeroCardCleared] = useState(false)
+
+  const heroWindowVisible = heroWindowMode === 'open' || heroWindowMode === 'maximized'
+  const heroWindowMaximized = heroWindowMode === 'maximized'
+  
+  const [skillsWindowMode, setSkillsWindowMode] = useState('open')
+  // open, minimized, closed, maximized
+
+  const skillsWindowVisible = skillsWindowMode === 'open' || skillsWindowMode === 'maximized'
+  const skillsWindowMaximized = skillsWindowMode === 'maximized'
+
+  const heroRestoreVisible = heroWindowMode === 'minimized'
+  const skillsRestoreVisible = skillsWindowMode === 'minimized'
+  
+  const scrollToSection = (sectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+  
   const visibleProjects = useMemo(() => {
     if (activeCategory === 'All') return featuredProjects
     return featuredProjects.filter((project) => project.category === activeCategory)
@@ -141,7 +204,12 @@ function App() {
 
       <nav className="sticky top-0 z-50 border-b-4 border-ink bg-cream/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
-          <a href="#home" className="font-pixel text-xl tracking-wide">KAYLEE.EXE</a>
+          <a
+            href="#home"
+            className="flex items-center gap-3 font-pixel text-xl tracking-wide"
+          >
+            <span>KAYLEE.EXE</span>
+          </a>
           <div className="hidden items-center gap-3 md:flex">
             {['about', 'projects', 'skills', 'contact'].map((item) => (
               <a key={item} href={`#${item}`} className="nav-chip">{item}</a>
@@ -151,15 +219,49 @@ function App() {
         </div>
       </nav>
 
-      <section id="home" className="relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-5 py-16 lg:grid-cols-[1.1fr_.9fr]">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+      <section
+          id="home"
+          className={`relative mx-auto grid min-h-[88vh] max-w-7xl items-center gap-10 px-5 py-16 transition-all duration-500 ${
+            heroWindowVisible && !heroWindowMaximized
+              ? 'lg:grid-cols-[1.1fr_.9fr]'
+              : 'lg:grid-cols-1'
+          }`}
+        >
+        <motion.div
+          layout
+          className={`hero-copy ${
+            heroWindowVisible && !heroWindowMaximized
+              ? 'hero-copy-with-window'
+              : 'hero-copy-expanded'
+          }`}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            layout: {
+              type: 'spring',
+              stiffness: 55,
+              damping: 20,
+              mass: 1.8,
+            },
+            opacity: {
+              duration: 0.45,
+              ease: 'easeOut',
+            },
+            y: {
+              duration: 0.7,
+              ease: 'easeOut',
+            },
+          }}
+        >
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border-3 border-ink bg-mint px-4 py-2 font-pixel text-sm shadow-pixel-sm">
             <Sparkles size={16} /> hi there, welcome to my portfolio!
           </p>
-          <h1 className="font-display text-6xl font-black leading-[0.92] tracking-tight text-ink sm:text-7xl lg:text-8xl">
-            frontend dev,<br /> full stack dev,<br /> and design.
+          <h1 className="hero-title font-display text-6xl font-black leading-[0.92] tracking-tight text-ink sm:text-7xl lg:text-8xl">
+            <span>frontend dev,</span>
+            <span>full stack dev,</span>
+            <span>and design.</span>
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink/75">
+          <p className="hero-description mt-6 text-lg leading-8 text-ink/75">
             i’m kaylee henry, a computer science student at Georgia Tech building interactive web apps, dashboards, and game-inspired experiences with a variety of different langauges and frameworks, as well as a strong visual design!
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
@@ -168,29 +270,116 @@ function App() {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.92, rotate: -2 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.8, delay: 0.1 }}>
-          <WindowFrame label="DEVELOPER" accent="bg-coral">
-            <div className="member-card">
-              <div className="photo-card">
-                <div className="name-plate">KAYLEE HENRY</div>
-                <img src={profilePic} alt="Kaylee Henry" />
-                <MousePointer2 className="pointer-icon" fill="white" />
-              </div>
-              <div className="member-info">
-                <div className="heart-row">♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡</div>
-                <p><span>NAME</span> KAYLEE HENRY</p>
-                <p><span>ROLE</span> FRONT-END DEV</p>
-                <p><span>FOCUS</span> UI/UX + WEB APPS</p>
-                <div className="mini-panel">
-                  <p>STATUS</p>
-                  <strong>ALWAYS DESIGNING</strong>
-                  <p>LOCATION</p>
-                  <strong>ATLANTA, GA</strong>
+        {heroRestoreVisible && (
+          <button
+            type="button"
+            className={`restore-window-button hero-restore-button ${
+              skillsRestoreVisible ? 'restore-button-stacked' : ''
+            }`}
+            onClick={() => {
+              scrollToSection('home')
+              setHeroWindowMode('open')
+            }}
+          >
+            open profile window
+          </button>
+        )}
+
+        {heroWindowVisible && (
+          <motion.div
+            layout
+            className={heroWindowMaximized ? 'hero-window-maximized' : ''}
+            initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{
+              layout: {
+                type: 'spring',
+                stiffness: 60,
+                damping: 18,
+                mass: 1.6,
+              },
+              opacity: {
+                duration: 0.35,
+                ease: 'easeOut',
+              },
+              scale: {
+                duration: 0.5,
+                ease: 'easeOut',
+              },
+              rotate: {
+                duration: 0.5,
+                ease: 'easeOut',
+              },
+            }}
+          >
+            <WindowFrame
+              label="DEVELOPER"
+              accent="bg-coral"
+              interactive
+              isMaximized={heroWindowMaximized}
+              onClose={() => setHeroWindowMode('closed')}
+              onMinimize={() => {
+                if (heroWindowMaximized) {
+                  setHeroWindowMode('open')
+                } else {
+                  setHeroWindowMode('minimized')
+                }
+              }}
+              onMaximize={() => {
+                if (!heroWindowMaximized) {
+                  setHeroWindowMode('maximized')
+                }
+              }}
+              onRefresh={() => {
+                setHeroCardCleared(true)
+                setHeroWindowMode('maximized')
+              }}
+            >
+              {heroCardCleared ? (
+                <div className="member-card member-card-empty">
+                  <div>
+                    <p className="section-kicker">profile data cleared</p>
+                    <h2 className="section-title">ready for game data.</h2>
+                    <p className="mt-4 leading-7 text-ink/75">
+                      the refresh button works now. later, you can replace this empty state
+                      with your mini game reset logic.
+                    </p>
+
+                    <button
+                      type="button"
+                      className="pixel-button mt-6 bg-mint"
+                      onClick={() => setHeroCardCleared(false)}
+                    >
+                      restore profile
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </WindowFrame>
-        </motion.div>
+              ) : (
+                <div className="member-card">
+                  <div className="photo-card">
+                    <div className="name-plate">KAYLEE HENRY</div>
+                    <img src={profilePic} alt="Kaylee Henry" />
+                    <MousePointer2 className="pointer-icon" fill="white" />
+                  </div>
+
+                  <div className="member-info">
+                    <div className="heart-row">♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡ ♡</div>
+                    <p><span>NAME</span> KAYLEE HENRY</p>
+                    <p><span>ROLE</span> FRONT-END DEV</p>
+                    <p><span>FOCUS</span> UI/UX + WEB APPS</p>
+
+                    <div className="mini-panel">
+                      <p>STATUS</p>
+                      <strong>ALWAYS DESIGNING</strong>
+                      <p>LOCATION</p>
+                      <strong>ATLANTA, GA</strong>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </WindowFrame>
+          </motion.div>
+        )}
       </section>
 
       <section id="about" className="relative mx-auto max-w-7xl px-5 py-12">
@@ -258,24 +447,82 @@ function App() {
       </section>
 
       <section id="skills" className="relative mx-auto max-w-7xl px-5 py-16">
-        <WindowFrame label="SKILLS" accent="bg-lavender">
-          <div className="skills-grid">
-            <div>
-              <p className="section-kicker">toolbox</p>
-              <h2 className="section-title">design-minded engineering.</h2>
-              <p className="mt-4 leading-7 text-ink/75">
-                i like building interfaces that feel intentional and have clear navigation, responsive layouts, meaningful motion, and code that is easy to maintain
-              </p>
-            </div>
-            <div className="skill-cloud">
-              {skills.map((skill, index) => (
-                <motion.span key={skill} whileHover={{ y: -6, rotate: index % 2 ? 2 : -2 }} className="skill-badge">
-                  <Star size={14} fill="currentColor" /> {skill}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-        </WindowFrame>
+        {skillsRestoreVisible && (
+          <button
+            type="button"
+            className="restore-window-button skills-restore-button"
+            onClick={() => {
+              scrollToSection('skills')
+              setSkillsWindowMode('open')
+            }}
+          >
+            open skills window
+          </button>
+        )}
+
+        {skillsWindowVisible && (
+          <motion.div
+            layout
+            className={skillsWindowMaximized ? 'skills-window-maximized' : ''}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              layout: {
+                type: 'spring',
+                stiffness: 60,
+                damping: 18,
+                mass: 1.6,
+              },
+              opacity: { duration: 0.35 },
+              scale: { duration: 0.5 },
+            }}
+          >
+            <WindowFrame
+              label="SKILLS"
+              accent="bg-lavender"
+              interactive
+              isMaximized={skillsWindowMaximized}
+              onClose={() => setSkillsWindowMode('closed')}
+              onMinimize={() => {
+                if (skillsWindowMaximized) {
+                  setSkillsWindowMode('open')
+                } else {
+                  setSkillsWindowMode('minimized')
+                }
+              }}
+              onMaximize={() => {
+                if (!skillsWindowMaximized) {
+                  setSkillsWindowMode('maximized')
+                }
+              }}
+              onRefresh={() => {
+                setSkillsWindowMode('maximized')
+              }}
+            >
+              <div className="skills-grid">
+                <div>
+                  <p className="section-kicker">toolbox</p>
+                  <h2 className="section-title">design-minded engineering.</h2>
+                  <p className="mt-4 leading-7 text-ink/75">
+                    i like building interfaces that feel intentional and have clear navigation, responsive layouts, meaningful motion, and code that is easy to maintain
+                  </p>
+                </div>
+
+                <div className="skill-cloud">
+                  {skills.map((skill, index) => (
+                    <motion.span
+                      key={skill}
+                      whileHover={{ y: -6, rotate: index % 2 ? 2 : -2 }}
+                      className="skill-badge"
+                    >
+                      <Star size={14} fill="currentColor" /> {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            </WindowFrame>
+          </motion.div>
+        )}
       </section>
 
       <section id="contact" className="relative mx-auto max-w-7xl px-5 py-16 pb-24">
