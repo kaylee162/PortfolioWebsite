@@ -226,8 +226,12 @@ a {
 
 .hero-window-maximized {
   position: fixed;
-  inset: 36px;
-  z-index: 80;
+  inset: 1.5rem;
+  width: auto;
+  height: auto;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  z-index: 100;
   display: grid;
   place-items: stretch;
 }
@@ -241,11 +245,44 @@ a {
 
 .hero-window-maximized .member-card {
   flex: 1;
-  align-items: center;
+  grid-template-columns: 320px minmax(240px, 300px) minmax(45%, 1fr);
+  align-items: stretch;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hero-window-maximized .photo-card {
+  grid-column: 1;
+  align-self: start;
 }
 
 .hero-window-maximized .photo-card img {
-  max-height: 58vh;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.hero-window-maximized .member-info {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.hero-window-maximized .member-extra {
+  grid-column: 3;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  gap: .75rem;
+
+  padding: .85rem;
 }
 
 .hero-copy {
@@ -294,7 +331,7 @@ a {
   position: relative;
   border: 4px solid #242033;
   background: #f26d57;
-  padding: .8rem;
+  padding: 2rem;
 }
 
 .name-plate {
@@ -303,14 +340,6 @@ a {
   padding: .3rem;
   text-align: center;
   font-weight: 900;
-}
-
-.photo-card img {
-  margin-top: .6rem;
-  aspect-ratio: 3 / 4;
-  width: 100%;
-  object-fit: cover;
-  border: 3px solid #242033;
 }
 
 .pointer-icon {
@@ -330,8 +359,8 @@ a {
 }
 
 .heart-row {
-  color: #fff;
-  text-shadow: 2px 2px 0 #242033;
+  color: #f86ee3;
+  text-shadow: 0.5px 0.5px 0 #7a2b6f;
   letter-spacing: .2rem;
   margin-bottom: .8rem;
 }
@@ -347,6 +376,73 @@ a {
   border: 3px solid #242033;
   background: white;
   padding: .1rem .35rem;
+}
+
+.member-extra {
+  display: none;
+  border: 4px solid #242033;
+  background: #fff9ef;
+  padding: 1rem;
+}
+
+.extra-kicker {
+  display: inline-block;
+  margin-bottom: .75rem;
+  border: 3px solid #242033;
+  background: #c7f6d4;
+  padding: .2rem .5rem;
+  font-size: .75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.member-extra h3 {
+  font-family: inherit;
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 0rem;
+}
+
+.member-extra p {
+  font-weight: 800;
+  font-size: clamp(.78rem, 1vw, .95rem);
+  line-height: 1.35;
+}
+
+.extra-list {
+  display: grid;
+  gap: .35rem;
+}
+
+.extra-list p {
+  border: 3px solid #242033;
+  background: white;
+  padding: .75rem;
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.extra-list span {
+  display: inline-block;
+  margin-right: .65rem;
+  font-size: 1.05rem;
+  color: #f26d57;
+}
+
+.game-hint {
+  border: 3px dashed #242033;
+  background: #f9c7d9;
+  padding: .6rem;
+  margin-top: 2rem;
+}
+
+.game-hint strong {
+  display: block;
+  margin-bottom: .25rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .mini-panel {
@@ -812,6 +908,163 @@ a {
 .game-message button:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0 #242033;
+}
+
+/* =========================================================
+   OCEANSCAPE MINI GAME
+   Page: Home / Hero interactive window
+   Styles the ocean background, animated swimmers, side bubbles,
+   treasure chest button, and simple coin HUD.
+   ========================================================= */
+
+.ocean-game {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  flex: 1;
+  overflow: hidden;
+  background: #74d8f7;
+  isolation: isolate;
+}
+
+.ocean-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: 125%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ocean-hud {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  z-index: 15;
+  border: 3px solid #242033;
+  border-radius: 14px;
+  background: rgba(255, 249, 239, .88);
+  padding: .65rem .8rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: .72rem;
+  color: #242033;
+  box-shadow: 4px 4px 0 rgba(36, 32, 51, .26);
+}
+
+.ocean-swimmer,
+.ocean-bubble,
+.ocean-floor {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ocean-swimmer {
+  z-index: 7;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center;
+  filter: drop-shadow(3px 5px 0 rgba(36, 32, 51, .16));
+  animation: ocean-swim-bob 1.8s ease-in-out infinite alternate;
+}
+
+.ocean-fish {
+  z-index: 8;
+}
+
+.ocean-visitor {
+  z-index: 6;
+  filter: drop-shadow(5px 7px 0 rgba(36, 32, 51, .14));
+  animation: ocean-swim-bob 2.4s ease-in-out infinite alternate;
+}
+
+.ocean-bubble {
+  z-index: 5;
+  height: auto;
+  opacity: .72;
+  animation: bubble-wiggle 1.9s ease-in-out infinite alternate;
+}
+
+.treasure-button {
+  position: absolute;
+  right: 36%;
+  bottom: 30px;
+  z-index: 14;
+  width: 105px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform .16s ease, filter .16s ease;
+}
+
+.treasure-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(4px 6px 0 rgba(36, 32, 51, .2));
+}
+
+.treasure-button:hover {
+  transform: translateY(-4px) rotate(-2deg);
+  filter: brightness(1.06);
+}
+
+.treasure-button:active {
+  transform: translateY(0) scale(.96);
+}
+
+.coin-burst {
+  position: absolute;
+  right: 72px;
+  bottom: 92px;
+  z-index: 18;
+  font-family: "Press Start 2P", monospace;
+  font-size: .9rem;
+  color: #ffd36d;
+  text-shadow: 2px 2px 0 #242033;
+  pointer-events: none;
+  animation: coin-float .9s ease-out forwards;
+}
+
+@keyframes ocean-swim-bob {
+  from {
+    margin-top: 0;
+  }
+
+  to {
+    margin-top: 8px;
+  }
+}
+
+@keyframes bubble-wiggle {
+  from {
+    margin-left: 0;
+    transform: scale(.96);
+  }
+
+  to {
+    margin-left: 8px;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes coin-float {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-44px) scale(1.18);
+  }
 }
 
 /* =========================================================
