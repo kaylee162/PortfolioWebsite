@@ -15,6 +15,7 @@ import {
 import profilePic from './assets/profilepic2.jpg'
 import './App.css'
 import FlappyDuckGame from './FlappyDuckGame'
+import OceanScapeGame from './OceanScapeGame'
 
 const featuredProjects = [
   {
@@ -110,6 +111,7 @@ function WindowFrame({
   children,
   label = 'DEVELOPER',
   accent = 'bg-coral',
+  url = 'https://kayleesportfolio.dev',
   interactive = false,
   isMaximized = false,
   onClose,
@@ -154,7 +156,7 @@ function WindowFrame({
           ↻
         </button>
 
-        <span className="url">https://kayleedesigns.dev</span>
+        <span className="url">{url}</span>
         <span className="mailbox">✉</span>
       </div>
 
@@ -169,7 +171,14 @@ function App() {
   const [heroWindowMode, setHeroWindowMode] = useState('open')
   // open, minimized, closed, maximized
 
-  const [heroCardCleared, setHeroCardCleared] = useState(false)
+  const heroCards = ['profile', 'flappy-duck', 'oceanscape']
+  const [activeHeroCard, setActiveHeroCard] = useState('profile')
+  
+  const heroCardUrls = {
+    profile: 'https://kayleesportfolio.dev',
+    'flappy-duck': 'https://flappyduck.dev',
+    oceanscape: 'https://ocean.dev',
+  }
 
   const heroWindowVisible = heroWindowMode === 'open' || heroWindowMode === 'maximized'
   const heroWindowMaximized = heroWindowMode === 'maximized'
@@ -316,6 +325,7 @@ function App() {
             <WindowFrame
               label="DEVELOPER"
               accent="bg-coral"
+              url={heroCardUrls[activeHeroCard]}
               interactive
               isMaximized={heroWindowMaximized}
               onClose={() => setHeroWindowMode('closed')}
@@ -332,13 +342,20 @@ function App() {
                 }
               }}
               onRefresh={() => {
-                setHeroCardCleared(true)
+                setActiveHeroCard((currentCard) => {
+                  const currentIndex = heroCards.indexOf(currentCard)
+                  const nextIndex = (currentIndex + 1) % heroCards.length
+
+                  return heroCards[nextIndex]
+                })
                 setHeroWindowMode('maximized')
               }}
             >
-              {heroCardCleared ? (
-                  <FlappyDuckGame />
-                ) : (
+              {activeHeroCard === 'flappy-duck' ? (
+                <FlappyDuckGame />
+              ) : activeHeroCard === 'oceanscape' ? (
+                <OceanScapeGame />
+              ) : (
                 <div className="member-card">
                   <div className="photo-card">
                     <div className="name-plate">KAYLEE HENRY</div>
@@ -359,6 +376,30 @@ function App() {
                       <strong>ATLANTA, GA</strong>
                     </div>
                   </div>
+
+                  {heroWindowMaximized && (
+                    <div className="member-extra">
+                      <div>
+                        <p className="extra-kicker">currently building</p>
+                        <h3>interactive worlds</h3>
+                        <p>
+                          i like turning normal sites and apps into playful, game-inspired
+                          interfaces with motion, personality, and little surprises :P
+                        </p>
+                      </div>
+
+                      <div className="extra-list">
+                        <p><span>01</span> playful interfaces</p>
+                        <p><span>02</span> interactive experiences</p>
+                        <p><span>03</span> enjoyable interactions</p>
+                      </div>
+
+                      <div className="game-hint">
+                        <strong>mini game unlocked!</strong>
+                        <p>Click refresh ↻ to explore a mini ocean scene.</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </WindowFrame>
