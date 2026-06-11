@@ -914,7 +914,7 @@ a {
    OCEANSCAPE MINI GAME
    Page: Home / Hero interactive window
    Styles the ocean background, animated swimmers, side bubbles,
-   treasure chest button, and simple coin HUD.
+   treasure chest button, mouse bubble trail, and coin HUD.
    ========================================================= */
 
 .ocean-game {
@@ -925,6 +925,7 @@ a {
   overflow: hidden;
   background: #74d8f7;
   isolation: isolate;
+  cursor: default;
 }
 
 .ocean-background {
@@ -944,7 +945,9 @@ a {
   position: absolute;
   top: 14px;
   left: 18px;
-  z-index: 15;
+  z-index: 20;
+  display: grid;
+  gap: .35rem;
   border: 3px solid #242033;
   border-radius: 14px;
   background: rgba(255, 249, 239, .88);
@@ -955,31 +958,17 @@ a {
   box-shadow: 4px 4px 0 rgba(36, 32, 51, .26);
 }
 
-.ocean-swimmer,
+.ocean-hud small {
+  font-size: .45rem;
+  line-height: 1.4;
+  opacity: .72;
+}
+
 .ocean-bubble,
-.ocean-floor {
+.mouse-bubble {
   position: absolute;
-  pointer-events: none;
   user-select: none;
-}
-
-.ocean-swimmer {
-  z-index: 7;
-  height: auto;
-  object-fit: contain;
-  transform-origin: center;
-  filter: drop-shadow(3px 5px 0 rgba(36, 32, 51, .16));
-  animation: ocean-swim-bob 1.8s ease-in-out infinite alternate;
-}
-
-.ocean-fish {
-  z-index: 8;
-}
-
-.ocean-visitor {
-  z-index: 6;
-  filter: drop-shadow(5px 7px 0 rgba(36, 32, 51, .14));
-  animation: ocean-swim-bob 2.4s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 .ocean-bubble {
@@ -987,6 +976,54 @@ a {
   height: auto;
   opacity: .72;
   animation: bubble-wiggle 1.9s ease-in-out infinite alternate;
+}
+
+.mouse-bubble {
+  z-index: 12;
+  border: 2px solid rgba(255, 255, 255, .8);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .2);
+  transform: translate(-50%, -50%);
+  animation: mouse-bubble-float .65s ease-out forwards;
+}
+
+.swimmer-button {
+  position: absolute;
+  z-index: 8;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform .14s ease, filter .14s ease;
+  animation: ocean-swim-bob 1.8s ease-in-out infinite alternate;
+}
+
+.swimmer-button:hover {
+  transform: translateY(-4px) scale(1.06);
+  filter: brightness(1.08);
+}
+
+.swimmer-button:active {
+  transform: scale(.94);
+}
+
+.visitor-button {
+  z-index: 7;
+  animation-duration: 2.4s;
+}
+
+.ocean-swimmer {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  filter: drop-shadow(3px 5px 0 rgba(36, 32, 51, .16));
+}
+
+.ocean-visitor {
+  filter: drop-shadow(5px 7px 0 rgba(36, 32, 51, .14));
 }
 
 .treasure-button {
@@ -1020,17 +1057,27 @@ a {
   transform: translateY(0) scale(.96);
 }
 
-.coin-burst {
+.coin-burst,
+.ocean-sparkle {
   position: absolute;
-  right: 72px;
-  bottom: 92px;
   z-index: 18;
   font-family: "Press Start 2P", monospace;
-  font-size: .9rem;
-  color: #ffd36d;
-  text-shadow: 2px 2px 0 #242033;
   pointer-events: none;
+}
+
+.coin-burst {
+  color: #ffd36d;
+  font-size: .9rem;
+  text-shadow: 2px 2px 0 #242033;
+  transform: translate(-50%, -50%);
   animation: coin-float .9s ease-out forwards;
+}
+
+.ocean-sparkle {
+  color: #fff9ef;
+  font-size: .55rem;
+  text-shadow: 2px 2px 0 #242033;
+  animation: sparkle-pop .9s ease-out forwards;
 }
 
 @keyframes ocean-swim-bob {
@@ -1055,15 +1102,39 @@ a {
   }
 }
 
-@keyframes coin-float {
+@keyframes mouse-bubble-float {
   from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    opacity: .8;
+    transform: translate(-50%, -50%) scale(.6);
   }
 
   to {
     opacity: 0;
-    transform: translateY(-44px) scale(1.18);
+    transform: translate(-50%, -120%) scale(1.4);
+  }
+}
+
+@keyframes coin-float {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -140%) scale(1.18);
+  }
+}
+
+@keyframes sparkle-pop {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(.9);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-34px) scale(1.14);
   }
 }
 
@@ -1120,4 +1191,51 @@ a {
   .url {
     font-size: .8rem;
   }
+}
+
+/* =========================================================
+   EMPLOYER QUICK SCAN ADDITIONS
+   Page: Hero + Projects
+   Adds recruiter-friendly summary chips and proof notes inside project cards.
+   ========================================================= */
+
+.quick-scan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  max-width: 44rem;
+}
+
+.quick-scan span {
+  border: 3px solid #242033;
+  background: #fff9ef;
+  padding: .45rem .65rem;
+  font-size: .78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 #242033;
+}
+
+.project-proof {
+  margin-top: 1rem;
+  border: 3px dashed #242033;
+  background: #fff2f4;
+  padding: .8rem;
+}
+
+.project-proof strong {
+  display: block;
+  margin-bottom: .3rem;
+  font-size: .75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #f26d57;
+}
+
+.project-proof p {
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: rgb(36 32 51 / 76%);
 }

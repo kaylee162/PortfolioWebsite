@@ -92,27 +92,113 @@ export default function OceanScapeGame() {
     const [swimmers, setSwimmers] = useState(makeStartingSwimmers)
     const [bubbles, setBubbles] = useState(() => Array.from({ length: 10 }, (_, index) => makeBubble(index)))
     const [coinBursts, setCoinBursts] = useState([])
+    const [sparkles, setSparkles] = useState([])
+    const [mouseBubbles, setMouseBubbles] = useState([])
 
     const gameRef = useRef(null)
     const swimmersRef = useRef(swimmers)
     const bubblesRef = useRef(bubbles)
     const lastFishSpawnRef = useRef(performance.now())
     const lastVisitorSpawnRef = useRef(performance.now())
+    const lastMouseBubbleRef = useRef(0)
 
-    const collectTreasure = (event) => {
-        event.stopPropagation()
+    const awardCoins = (amount) => {
+        setCoins((currentCoins) => {
+            const nextCoins = currentCoins + amount
+            localStorage.setItem('oceanCoins', String(nextCoins))
+            return nextCoins
+        })
+    }
 
-        const earnedCoins = Math.floor(randomBetween(3, 8))
-        const nextCoins = coins + earnedCoins
+    const getPointInGame = (event) => {
+        const rect = gameRef.current.getBoundingClientRect()
 
-        setCoins(nextCoins)
-        localStorage.setItem('oceanCoins', String(nextCoins))
+        return {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+        }
+    }
 
+    const addCoinBurst = (amount, x, y) => {
         setCoinBursts((currentBursts) => [
             ...currentBursts,
             {
                 id: `coin-${Date.now()}-${Math.random()}`,
-                amount: earnedCoins,
+                amount,
+                x,
+                y,
+            },
+        ])
+    }
+
+    const addSparkle = (x, y, text = 'pop!') => {
+        setSparkles((currentSparkles) => [
+            ...currentSparkles,
+            {
+                id: `sparkle-${Date.now()}-${Math.random()}`,
+                x,
+                y,
+                text,
+            },
+        ])
+    }
+
+    const collectTreasure = (event) => {
+        event.stopPropagation()
+
+        const point = getPointInGame(event)
+        const earnedCoins = Math.floor(randomBetween(3, 8))
+
+        awardCoins(earnedCoins)
+        addCoinBurst(earnedCoins, point.x, point.y)
+        addSparkle(point.x - 10, point.y - 28, 'treasure!')
+    }
+
+    const tapSwimmer = (event, tappedSwimmer) => {
+        event.stopPropagation()
+
+        const point = getPointInGame(event)
+        const earnedCoins = tappedSwimmer.kind === 'visitor'
+            ? Math.floor(randomBetween(4, 9))
+            : Math.floor(randomBetween(1, 4))
+
+        awardCoins(earnedCoins)
+        addCoinBurst(earnedCoins, point.x, point.y)
+        addSparkle(point.x - 8, point.y - 24, tappedSwimmer.kind === 'visitor' ? 'hello!' : 'boop!')
+
+        setSwimmers((currentSwimmers) => currentSwimmers.map((swimmer) => {
+            if (swimmer.id !== tappedSwimmer.id) return swimmer
+
+            const nextSpeed = swimmer.speed * -1.15
+            const nextDirection = nextSpeed > 0 ? 'right' : 'left'
+
+            return {
+                ...swimmer,
+                speed: nextSpeed,
+                movingRight: nextSpeed > 0,
+                direction: nextDirection,
+                img: getAnimalImage(swimmer.animalName, nextDirection),
+                turnCooldown: randomBetween(110, 180),
+            }
+        }))
+    }
+
+    const handleOceanPointerMove = (event) => {
+        const now = performance.now()
+
+        if (now - lastMouseBubbleRef.current < 70) return
+
+        lastMouseBubbleRef.current = now
+
+        const point = getPointInGame(event)
+
+        setMouseBubbles((currentBubbles) => [
+            ...currentBubbles.slice(-14),
+            {
+                id: `trail-${Date.now()}-${Math.random()}`,
+                x: point.x,
+                y: point.y,
+                size: randomBetween(8, 18),
             },
         ])
     }
@@ -144,8 +230,6 @@ export default function OceanScapeGame() {
 
                         const safelyInsideFrame = swimmer.x > 80 && swimmer.x < gameWidth - swimmer.size - 80
 
-                        // Fish can occasionally turn around while still on screen.
-                        // When that happens, the sprite swaps between the left/right folder versions.
                         if (swimmer.kind === 'fish' && safelyInsideFrame && nextTurnCooldown <= 0 && Math.random() > 0.992) {
                             nextSpeed *= -1
                             nextDirection = nextSpeed > 0 ? 'right' : 'left'
@@ -218,13 +302,52 @@ export default function OceanScapeGame() {
         return () => clearTimeout(timeout)
     }, [coinBursts])
 
+    useEffect(() => {
+        if (sparkles.length === 0) return undefined
+
+        const timeout = setTimeout(() => {
+            setSparkles((currentSparkles) => currentSparkles.slice(1))
+        }, 900)
+
+        return () => clearTimeout(timeout)
+    }, [sparkles])
+
+    useEffect(() => {
+        if (mouseBubbles.length === 0) return undefined
+
+        const timeout = setTimeout(() => {
+            setMouseBubbles((currentBubbles) => currentBubbles.slice(1))
+        }, 650)
+
+        return () => clearTimeout(timeout)
+    }, [mouseBubbles])
+
     return (
-        <div ref={gameRef} className="ocean-game" aria-label="Ocean treasure mini scene">
+        <div
+            ref={gameRef}
+            className="ocean-game"
+            aria-label="Ocean treasure mini scene"
+            onPointerMove={handleOceanPointerMove}
+        >
             <img src={oceanBackgroundImg} alt="" className="ocean-background" />
 
             <div className="ocean-hud">
                 <span>coins: {coins}</span>
+                <small>click fish · open treasure chest</small>
             </div>
+
+            {mouseBubbles.map((bubble) => (
+                <span
+                    key={bubble.id}
+                    className="mouse-bubble"
+                    style={{
+                        left: `${bubble.x}px`,
+                        top: `${bubble.y}px`,
+                        width: `${bubble.size}px`,
+                        height: `${bubble.size}px`,
+                    }}
+                />
+            ))}
 
             {bubbles.map((bubble) => (
                 <img
@@ -241,18 +364,25 @@ export default function OceanScapeGame() {
             ))}
 
             {swimmers.map((swimmer) => (
-                <img
+                <button
                     key={swimmer.id}
-                    src={swimmer.img}
-                    alt=""
-                    className={`ocean-swimmer ${swimmer.kind === 'visitor' ? 'ocean-visitor' : 'ocean-fish'}`}
+                    type="button"
+                    className={`swimmer-button ${swimmer.kind === 'visitor' ? 'visitor-button' : 'fish-button'}`}
                     style={{
                         left: `${swimmer.x}px`,
                         top: `${swimmer.y}px`,
                         width: `${swimmer.size}px`,
                         animationDelay: `${swimmer.delay}s`,
                     }}
-                />
+                    onClick={(event) => tapSwimmer(event, swimmer)}
+                    aria-label={`Tap ${swimmer.animalName}`}
+                >
+                    <img
+                        src={swimmer.img}
+                        alt=""
+                        className={`ocean-swimmer ${swimmer.kind === 'visitor' ? 'ocean-visitor' : 'ocean-fish'}`}
+                    />
+                </button>
             ))}
 
             <button
@@ -265,7 +395,29 @@ export default function OceanScapeGame() {
             </button>
 
             {coinBursts.map((burst) => (
-                <span key={burst.id} className="coin-burst">+{burst.amount}</span>
+                <span
+                    key={burst.id}
+                    className="coin-burst"
+                    style={{
+                        left: `${burst.x}px`,
+                        top: `${burst.y}px`,
+                    }}
+                >
+                    +{burst.amount}
+                </span>
+            ))}
+
+            {sparkles.map((sparkle) => (
+                <span
+                    key={sparkle.id}
+                    className="ocean-sparkle"
+                    style={{
+                        left: `${sparkle.x}px`,
+                        top: `${sparkle.y}px`,
+                    }}
+                >
+                    {sparkle.text}
+                </span>
             ))}
         </div>
     )
