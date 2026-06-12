@@ -52,7 +52,7 @@ function Skills({ skillsWindowMode, setSkillsWindowMode, scrollToSection }) {
                 <p className="section-kicker">toolbox</p>
                 <h2 className="section-title">design-minded engineering.</h2>
                 <p className="mt-4 leading-7 text-ink/75">
-                  I like building interfaces that feel intentional, with clear navigation, responsive layouts, meaningful motion, and code that is easy to maintain.
+                  i like building interfaces that feel intentional, with clear navigation, responsive layouts, meaningful motion, and code that is easy to maintain.
                 </p>
               </div>
 
