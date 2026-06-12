@@ -29,7 +29,6 @@ function WindowFrame({
         </button>
 
         <span className="url">{url}</span>
-        <span className="mailbox">✉</span>
       </div>
 
       {children}
