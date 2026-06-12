@@ -3,18 +3,18 @@ import { Trophy } from 'lucide-react'
 const highlights = [
   [
     'Frontend Dev',
-    'React, Vite, JavaScript',
-    'Building responsive, polished interfaces with reusable components, clear user flows, and thoughtful UI/UX details.',
+    'React, Vite, Node, Next, JavaScript, TypeScript',
+    'building responsive, polished interfaces with reusable components, clear user flows, and thoughtful UI/UX details.',
   ],
   [
     'Full-Stack Dev',
-    'Django, Flask, Python',
-    'Creating data-driven apps with authentication, dashboards, APIs, SQL, PostgreSQL, and MongoDB databases.',
+    'Flask, Django, C, C#, Java, .NET, SQL, Python',
+    'creating data-driven apps with authentication, dashboards, APIs, SQL, PostgreSQL, MongoDB, and Express.js.',
   ],
   [
     'Interactive Builder',
     'Games, motion, creative UI',
-    'Designing sprites, tilemaps, collision systems, playful interactions, and small details that make apps feel memorable.',
+    'designing sprites, tilemaps, collision systems, playful interactions, and small details that make apps feel memorable.',
   ],
 ]
 
@@ -26,7 +26,7 @@ function About() {
           <p className="section-kicker">welcome</p>
           <h2 className="section-title">hi, i’m kaylee!</h2>
           <p className="mt-4 leading-7 text-ink/75">
-            I’m a computer science student at Georgia Tech interested in front-end engineering, full-stack web apps, UI/UX, and interactive product experiences. This portfolio is a mix of my projects, design style, technical skills, and the creative details I bring into my work.
+            i’m a computer science student at Georgia Tech interested in front-end development, full-stack web apps, UI/UX, and interactive product experiences. this portfolio is a mix of my projects, design style, technical skills, and the creative details i bring into my work.
           </p>
         </div>
 

@@ -8,7 +8,7 @@ function Contact() {
           <p className="section-kicker">next level?</p>
           <h2 className="section-title">let’s build something memorable.</h2>
           <p className="mt-4 max-w-2xl leading-7 text-ink/75">
-            I’m open to internships, co-ops, and front-end or full-stack opportunities where I can build polished, useful, and visually thoughtful software.
+            i’m open to internships, co-ops, and front-end or full-stack opportunities where i can build polished, useful, and visually thoughtful software.
           </p>
         </div>
 

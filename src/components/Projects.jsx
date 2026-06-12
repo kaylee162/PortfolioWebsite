@@ -10,7 +10,7 @@ function Projects({ activeCategory, setActiveCategory, visibleProjects }) {
           <p className="section-kicker">project select</p>
           <h2 className="section-title">featured projects</h2>
           <p className="mt-3 max-w-2xl leading-7 text-ink/70">
-            A mix of full-stack apps, dashboards, and interactive projects that show how I think through user experience, implementation, and visual polish.
+            a mix of full-stack apps, dashboards, and interactive projects that show how i think through user experience, implementation, and visual polish.
           </p>
         </div>
 
@@ -60,11 +60,6 @@ function Projects({ activeCategory, setActiveCategory, visibleProjects }) {
                 <p className="mt-3 leading-7 text-ink/75">
                 {project.description}
                 </p>
-
-                <div className="project-proof">
-                <strong>Why it matters</strong>
-                <p>{project.impact}</p>
-                </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (

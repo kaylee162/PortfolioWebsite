@@ -42,8 +42,7 @@ function HeroTitle() {
       className="hero-title font-display text-6xl font-black leading-[0.92] tracking-tight sm:text-7xl lg:text-7xl"
     >
       <span>creative full-stack</span>
-      <span>developer building</span>
-      <span>playful web apps.</span>
+      <span>and frontend developer</span>
     </h1>
   )
 }
@@ -79,19 +78,17 @@ function Hero({
           y: { duration: 0.7, ease: 'easeOut' },
         }}
       >
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border-3 border-ink bg-mint px-4 py-2 font-pixel text-sm shadow-pixel-sm">
-          <Sparkles size={16} /> hi there, welcome to my portfolio!
-        </p>
-
         <HeroTitle />
 
         <p className="hero-description mt-6 text-lg leading-8 text-ink/75">
-          I'm Kaylee Henry, a computer science student at Georgia Tech who enjoys building polished interfaces, full-stack apps, dashboards, and game-inspired experiences with strong visual design and clean user flows.
+          hi! i'm Kaylee Henry, a computer science student at Georgia Tech who enjoys designing and building modern web applications with a focus on user experience and design. 
+          i have a passion for creating intuitive and visually appealing interfaces that provide a seamless user experience.
         </p>
         <div className="quick-scan mt-6">
           <span>Georgia Tech CS</span>
-          <span>React + Django</span>
-          <span>Front-end / Full-stack</span>
+          <span>Front-end Dev</span>
+          <span>Full-stack Dev</span>
+          <span>UI / UX Design</span>
           <span>Atlanta, GA</span>
         </div>
       </motion.div>
