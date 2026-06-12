@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Github, Sparkles } from 'lucide-react'
+import { useRef, useCallback } from 'react'
+import { Sparkles } from 'lucide-react'
 import WindowFrame from './WindowFrame'
 import HeroProfileCard from './HeroProfileCard'
 import FlappyDuckGame from '../FlappyDuckGame'
@@ -13,6 +14,41 @@ const heroCardUrls = {
   oceanscape: 'https://ocean.dev',
 }
 
+/* ─── Mouse-reactive gradient title ──────────────────────────── */
+function HeroTitle() {
+  const titleRef = useRef(null)
+
+  const handleMouseMove = useCallback((e) => {
+    const rect = titleRef.current?.getBoundingClientRect()
+    if (!rect) return
+
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+
+    titleRef.current.style.setProperty('--mouse-x', `${x}%`)
+    titleRef.current.style.setProperty('--mouse-y', `${y}%`)
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    titleRef.current?.style.setProperty('--mouse-x', '25%')
+    titleRef.current?.style.setProperty('--mouse-y', '35%')
+  }, [])
+
+  return (
+    <h1
+      ref={titleRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="hero-title font-display text-6xl font-black leading-[0.92] tracking-tight sm:text-7xl lg:text-7xl"
+    >
+      <span>creative full-stack</span>
+      <span>developer building</span>
+      <span>playful web apps.</span>
+    </h1>
+  )
+}
+
+/* ─── Hero section ────────────────────────────────────────────── */
 function Hero({
   heroWindowMode,
   setHeroWindowMode,
@@ -46,13 +82,11 @@ function Hero({
         <p className="mb-4 inline-flex items-center gap-2 rounded-full border-3 border-ink bg-mint px-4 py-2 font-pixel text-sm shadow-pixel-sm">
           <Sparkles size={16} /> hi there, welcome to my portfolio!
         </p>
-        <h1 className="hero-title font-display text-6xl font-black leading-[0.92] tracking-tight text-ink sm:text-7xl lg:text-7xl">
-          <span>creative full-stack</span>
-          <span>developer building</span>
-          <span>playful web apps.</span>
-        </h1>
+
+        <HeroTitle />
+
         <p className="hero-description mt-6 text-lg leading-8 text-ink/75">
-          I’m Kaylee Henry, a computer science student at Georgia Tech who enjoys building polished interfaces, full-stack apps, dashboards, and game-inspired experiences with strong visual design and clean user flows.
+          I'm Kaylee Henry, a computer science student at Georgia Tech who enjoys building polished interfaces, full-stack apps, dashboards, and game-inspired experiences with strong visual design and clean user flows.
         </p>
         <div className="quick-scan mt-6">
           <span>Georgia Tech CS</span>
