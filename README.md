@@ -1,33 +1,41 @@
-# Kaylee Henry Portfolio
+# Kaylee Henry — Portfolio
 
-A personal portfolio website built with React, Vite, and Tailwind CSS.
+A personal portfolio site built with React, Vite, and Tailwind CSS. It showcases my projects, technical skills, and a bit of my UI/UX and interactive design sensibility — including a couple of hidden mini-games for anyone who goes looking.
 
-This site showcases my projects, technical experience, UI/UX work, and interactive web design style. The portfolio focuses on combining clean front-end development with playful visuals and polished user experience details.
-
-## Live Site
-
-Visit the portfolio here:
-
-```txt
-https://portfolio-website-git-main-kaylee162s-projects.vercel.app/
-```
+**Live site:** [portfolio-website-delta-snowy-48.vercel.app](https://portfolio-website-delta-snowy-48.vercel.app)
 
 ## Tech Stack
 
-* React
-* Vite
-* Tailwind CSS
-* Lucide React
+- **React** — component structure and UI state
+- **Vite** — dev server and build tooling
+- **Tailwind CSS** — styling
+- **Framer Motion** — scroll and hover animations
+- **Lucide React** — icon set
 
 ## Features
 
-* Interactive and responsive UI
-* Custom pixel-inspired design system
-* Animated components and hover interactions
-* Project showcase sections
-* Skills and experience highlights
-* Mobile-friendly layout
-* Interactive Easter Eggs
+- Custom pixel-inspired design system with a retro/CRT visual style
+- Filterable project grid (React, Django, Game Dev, Java)
+- Animated hero and skills sections with a "window" open/minimize interaction
+- Scroll-reveal animations on section entry
+- Fully responsive, mobile-friendly layout
+- Two hidden interactive mini-games (Flappy Duck and an ocean-themed game) as easter eggs
+
+## Project Structure
+
+```
+├── public/              # Static assets (favicon, resume, icons)
+├── src/
+│   ├── assets/          # Images used across sections and games
+│   ├── components/      # Nav, Hero, About, Projects, Skills, Contact, etc.
+│   ├── data/             # Project and skills content (projects.js, skills.js)
+│   ├── App.jsx           # Top-level layout and state
+│   ├── FlappyDuckGame.jsx
+│   ├── OceanScapeGame.jsx
+│   └── main.jsx
+├── index.html
+└── vite.config.js
+```
 
 ## Getting Started
 
@@ -40,7 +48,7 @@ git clone https://github.com/kaylee162/PortfolioWebsite.git
 Move into the project folder:
 
 ```bash
-cd portfolio
+cd PortfolioWebsite
 ```
 
 Install dependencies:
@@ -55,11 +63,7 @@ Start the development server:
 npm run dev
 ```
 
-The app will open locally through Vite, usually at:
-
-```txt
-http://localhost:5173
-```
+The app will open locally through Vite, usually at `http://localhost:5173`.
 
 ## Build for Production
 
@@ -75,9 +79,13 @@ npm run preview
 
 ## Deployment
 
-The site is deployed with Vercel for fast hosting and automatic deployments from GitHub.
+The site is deployed on Vercel with automatic deployments from the `main` branch.
 
 ## Author
 
-Kaylee Henry
-Computer Science Student at Georgia Tech
+**Kaylee Henry**
+Computer Science student at Georgia Tech
+
+- Email: kayleehenry162@gmail.com
+- GitHub: [github.com/kaylee162](https://github.com/kaylee162)
+- LinkedIn: [linkedin.com/in/kaylee-henry-769357313](https://www.linkedin.com/in/kaylee-henry-769357313/)
